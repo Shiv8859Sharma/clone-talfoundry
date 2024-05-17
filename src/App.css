@@ -1,0 +1,19 @@
+.font-figtree {
+    font-family: Figtree, sans-serif;
+}
+
+.bg-hero1_bg {
+    background-image: linear-gradient(to bottom, #FA709A, #FEE140);
+}
+
+.bg-hero2_bg {
+    background-image: linear-gradient(to bottom, #A18CD1, #FBC2EB);
+}
+
+.bg-hero3_bg {
+    background-image: linear-gradient(to bottom, #6E45E2, #88D3CE);
+}
+
+.button-linear-active {
+    background: linear-gradient(128deg, rgba(113, 67, 215, 1) 0%, rgba(44, 87, 243, 1) 35%, rgba(78, 212, 247, 1) 100%);
+}

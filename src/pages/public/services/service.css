@@ -1,0 +1,8 @@
+@media only screen and (min-width: 1280px) {
+    .AWS_manage_section {
+        background-image: url('@/assets/webp//Professional_woman.webp');
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: contain;
+    }
+}
