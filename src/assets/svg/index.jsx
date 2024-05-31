@@ -1,12 +1,16 @@
 import React from 'react';
 
-const importIcon = (name) => {
-    return React.lazy(() => import(`./${name}.svg?react`))
+export const ImportIcon = (name, folderName, outSide) => {
+  if(outSide){
+    return React.lazy(() => import(`${outSide}/${folderName}/${name}.svg?react`))
+  }
+  if (folderName) {
+    return React.lazy(() => import(`./${folderName}/${name}.svg?react`))
+  }
+  return React.lazy(() => import(`./${name}.svg?react`))
 }
-
-const Icon = ({ name, ...rest }) => {
-  const IconComponent = importIcon(name);
-
+const Icon = ({ folderName, name, outSide, ...rest }) => {
+  const IconComponent = ImportIcon(name, folderName, outSide);
   if (!IconComponent) {
     return null;
   }
@@ -18,4 +22,4 @@ const Icon = ({ name, ...rest }) => {
   );
 };
 
-export default  Icon;
+export default Icon;

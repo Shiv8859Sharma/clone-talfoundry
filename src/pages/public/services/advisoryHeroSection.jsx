@@ -1,4 +1,5 @@
 import Image from "../../../components/ImageElement"
+import SvgIcon from "@/assets/svg"
 
 const AdvisoryHeroSection = (props) => {
     let { type = '', heading = '', sectionClass = '', headingClass = '', buttonClass = '', centerImage = '', AdvisoryCircleList = [] } = props
@@ -34,7 +35,7 @@ const AdvisoryHeroSection = (props) => {
                                                 <li key={`${index}_${advisory?.text}`} className={`flex flex-col items-center absolute ${advisory?.className}`}>
                                                     <div className="icon w-8 h-8 rounded-full overflow-hidden">
                                                         {
-                                                            advisory?.icon ? advisory?.icon : <img src={advisory?.image} alt="AWS_1" />
+                                                            advisory?.icon ? <SvgIcon name={advisory?.icon} folderName={advisory?.folderName} className='rounded-full' height='100%' width='100%' /> : <img src={advisory?.image} alt="AWS_1" />
                                                         }
                                                        
                                                     </div>

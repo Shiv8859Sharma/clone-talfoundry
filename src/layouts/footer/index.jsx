@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux"
-import logoSvg from '@/assets/commonAssets/logo.svg'
 import Image from "@/components/ImageElement"
 import { Link } from "react-router-dom"
 import twitter from '@/assets/webp/twitter.webp'
 import fb from '@/assets/webp/fb.webp'
 import linkedin from '@/assets/webp/linkedin.webp'
 import insta from '@/assets/webp/insta.webp'
+import SvgIcon from "@/assets/svg"
 
 let socialImages = [twitter, fb, linkedin, insta]
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
                             <div className="footer_top flex flex-col items-center gap-8 xl:flex-row xl:justify-between">
                                 <div className="brand_logo cursor-pointer">
                                     <Link to="/" className="flex items-center gap-1">
-                                        <Image src={logoSvg} alt="logo" style={{ width: '28px' }} />
+                                        <SvgIcon name='logo' folderName='commonAssets' outSide='..' width='1.8rem' />
                                         <span className="font-bold text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-tl from-[#4ED4F7] via-[#2C57F3] to-[#7143D7]">
                                             Talfoundry
                                         </span>

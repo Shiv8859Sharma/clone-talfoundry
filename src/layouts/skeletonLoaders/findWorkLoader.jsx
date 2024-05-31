@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 const FindWorkLoader = ({ count }) => {
     return (
         [...Array(count)].map((item) => {
-            return <li key={`find-work-loader_${item}`} className="p-8 animate-pulse border border-[#F1E7F8] rounded-[16px] bg-[#FFFFFF] flex flex-col gap-6">
+            let loaderid =  useId()
+            return <li key={`find_work_loader_${item}-${loaderid}`} className="p-8 animate-pulse border border-[#F1E7F8] rounded-[16px] bg-[#FFFFFF] flex flex-col gap-6">
                 <div className="details_top flex flex-wrap justify-between">
                     <div className="top_left flex items-center gap-4">
                         <div className="skeleton-loader w-12 h-12 bg-gray-300 rounded-full"></div> {/* Skeleton loader for job image */}

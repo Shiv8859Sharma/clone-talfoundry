@@ -3,10 +3,7 @@ import premiumIcon from "@/assets/webp/premium.webp"
 import searchGradientIcon from "@/assets/webp/search-gradient.webp"
 import ShieldIcon from "@/assets/webp/shield.webp"
 import Image from "@/components/ImageElement"
-import ReceiptIcon from '@/assets/svg/receipt.svg'
-import maximizeIcon from '@/assets/svg/maximize.svg'
-import clockIcon from '@/assets/svg/24-hour-clock.svg'
-
+import SvgIcon from "@/assets/svg"
 
 const ChooseSection = () => {
     return (
@@ -20,32 +17,32 @@ const ChooseSection = () => {
                     <div className="choose_btm">
                         <div className="choose_left md:max-w-full xl:max-w-2xl 3xl:max-w-5xl grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 3xl:grid-cols-3 gap-10 3xl:gap-4">
                             <ChooseCard
-                                icon={premiumIcon}
+                                image={premiumIcon}
                                 title={'Top quality talent on demand'}
                                 description={'Get access to quality Cloud Experts with a wide range of specialized cloud skills on demand. We only let in the top 1% of applicants, so you get access to the best of the best.'}
                             />
                             <ChooseCard
-                                icon={searchGradientIcon}
+                                image={searchGradientIcon}
                                 title={'Comprehensive vetting process'}
                                 description={'Spend less time screening and more time executing. Every candidate is pre-vetted and tailor-matched to you.'}
                             />
                             <ChooseCard
-                                icon={ShieldIcon}
+                                image={ShieldIcon}
                                 title={'Safe & secure'}
                                 description={'We value your safety and trust. We monitor every transaction and procedure in place to protect you from phishing, fraud, and identity theft.'}
                             />
                             <ChooseCard
-                                icon={ReceiptIcon}
+                                icon={'receipt'}
                                 title={'Hassle - Free Billing'}
                                 description={'Everything in one place. Manage all hours, billing, and future requests from your Talfoundry account.'}
                             />
                             <ChooseCard
-                                icon={maximizeIcon}
+                                icon={'maximize'}
                                 title={'Flexibility & Scale'}
                                 description={'Tap into top-tier talent and scale your short or long-term projects.'}
                             />
                             <ChooseCard
-                                icon={clockIcon}
+                                icon={'24-hour-clock'}
                                 title={'Stellar 24/7 Support'}
                                 description={'Our support team is there to help you every step of the way via phone, email, and live chat.'}
                             />
@@ -60,12 +57,15 @@ const ChooseSection = () => {
 export default ChooseSection
 
 function ChooseCard(props) {
-    let { icon, title, description } = props
+    let { icon = '', title, description, image = '' } = props
     return (
         <div className="choose_left_content flex flex-col gap-4 md:gap-6">
             <div className="choose_icon w-7 h-7 md:w-10 md:h-10 lg:w-12 lg:h-12">
                 {/* <img src="./assets/homepage/premium.webp" alt="premium" /> */}
-                <Image src={icon} alt={'icon'} />
+                {
+                    icon ? <SvgIcon name={icon} />
+                        : <Image src={image} alt={'icon'} />
+                }
 
             </div>
             <div className="choose_txt lg:w-[90%] flex flex-col gap-2">

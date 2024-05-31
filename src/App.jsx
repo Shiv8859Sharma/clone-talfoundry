@@ -8,7 +8,7 @@ function App() {
   let userType =  ''
   return (
     <div className="bg-[#FDFBFE] font-figtree">
-      <RouterProvider router={router(userType)} fallbackElement={null} />
+      <RouterProvider router={router(userType)} />
     </div>
   );
 }

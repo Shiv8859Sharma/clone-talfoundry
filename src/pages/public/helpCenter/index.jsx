@@ -166,7 +166,6 @@ const HelpSlideCard = (props) => {
         <li className="btm_box rounded-[14px] transition-all duration-300 lg:hover:shadow-[0px_6px_50px_#137DFF1C] lg:hover:bg-[#FFFFFF]">
             <a className="flex flex-col gap-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10" href="">
                 <div className="box_icon">
-                    {/* <img src="./assets/help_center/feedback.svg" alt="feedback"> */}
                     {iconName && <SvgIcon name={iconName} />}
                 </div>
                 <div className="box_text flex flex-col gap-2">

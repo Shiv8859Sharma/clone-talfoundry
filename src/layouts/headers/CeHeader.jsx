@@ -1,11 +1,10 @@
-import logoSvg from '@/assets/commonAssets/logo.svg'
-
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { popupOpen } from '@/globalStates/actions/PopupAction'
+import SvgIcon from "@/assets/svg"
 
 const FreelancerHeader = () => {
     const [open, setOpen] = useState(false)
@@ -180,11 +179,7 @@ const FreelancerHeader = () => {
                             <div className="ml-4 flex lg:ml-0 justify-center w-full lg:w-auto lg:justify-between">
                                 <div className='flex items-center cursor-pointer gap-1 hover:text-[#0F2830] hover:opacity-100' data-url='/' id='logo'>
                                     <span className="sr-only">Your Company</span>
-                                    <img
-                                        className="w-7 h-5"
-                                        src={logoSvg}
-                                        alt=""
-                                    />
+                                    <SvgIcon name='logo' folderName='commonAssets' outSide='..' className="w-7 h-5" />
                                     <span className="font-bold text-2xl lg:text-3xl text-[#0F2830] hover:text-[#0F2830]">
                                         Talfoundry
                                     </span>

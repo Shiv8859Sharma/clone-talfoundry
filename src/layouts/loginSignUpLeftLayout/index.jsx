@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'; // You may need to adjust this based on your routing setup
 import backGroundImage from '@/assets/svg/onBoardingBackground.svg'
-import logoSvg from '@/assets/commonAssets/logo.svg'
 import image1 from '@/assets/commonAssets/onBoarding/image1.svg'
 import image2 from '@/assets/commonAssets/onBoarding/image2.svg'
 import image3 from '@/assets/commonAssets/onBoarding/image3.svg'
 import { useEffect, useState } from 'react';
 import Image from "@/components/ImageElement"
+import SvgIcon from "@/assets/svg"
 
 let images = [image1, image2, image3]
 const LoginSignUpLeftLayout = () => {
@@ -27,7 +27,7 @@ const LoginSignUpLeftLayout = () => {
             <div className="content relative flex flex-col items-center gap-10">
                 <div className="brand_logo w-full cursor-pointer">
                     <Link to="/" className="flex items-center gap-1 outline-0">
-                        <Image className="w-7 h-5" src={logoSvg} alt="brand_logo" />
+                        <SvgIcon name='logo' folderName='commonAssets' outSide='..' className="w-7 h-5" />
                         <span className="font-bold text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-tl from-[#4ED4F7] via-[#2C57F3] to-[#7143D7]">Talfoundry</span>
                     </Link>
                 </div>

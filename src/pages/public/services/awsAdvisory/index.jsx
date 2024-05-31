@@ -1,80 +1,127 @@
 import '../service.css'
 import AdvisoryHeroSection from "../advisoryHeroSection"
 import centerAwsAdvisoryImage from '@/assets/svg/center-aws-advisory.svg'
-import aws1 from '@/assets/svg/AWS-Migration.svg'
-import aws2 from '@/assets/svg/AWS-Storage.svg'
-import aws3 from '@/assets/svg/AWS_3.svg'
-import aws4 from '@/assets/svg/AWS_4.svg'
-import aws5 from '@/assets/svg/AWS_5.svg'
-import aws6 from '@/assets/svg/AWS_6.svg'
-import aws7 from '@/assets/svg/AWS_7.svg'
-import aws8 from '@/assets/svg/AWS_8.svg'
-import aws9 from '@/assets/svg/AWS_9.svg'
-import aws10 from '@/assets/svg/AWS_10.svg'
-import globeWithCursorIcon from '@/assets/svg/globe-with-cursor.svg'
-import ideaBrainIcon from '@/assets/svg/idea-brain.svg'
-import presentationIcon from '@/assets/svg/presentation.svg'
-import cloudWithLockIcon from '@/assets/svg/cloud-with-lock-icon.svg'
-import rocketIcon from '@/assets/svg/rocket.svg'
-import customerServiceIcon from '@/assets/svg/customer-service.svg'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import BookACallChatLayout from '@/layouts/bookAcallChatLayout'
 import SvgIcon from "@/assets/svg"
-import React, { useId } from 'react'
+import React, { Fragment, useId } from 'react'
 
 let awsAdvisoryCircleData = [
     {
-        image: aws1,
+        icon: 'Migration',
+        folderName: 'aws-advisory',
         className: 'top-[6%] left-[44%]',
         text: 'Migration'
     },
     {
-        image: aws2,
+        icon: 'Storage',
+        folderName: 'aws-advisory',
         className: 'top-[16%] right-[18%]',
         text: 'Storage'
     },
     {
-        image: aws3,
+        icon: 'Serverless',
+        folderName: 'aws-advisory',
         className: 'top-[32%] right-[5%]',
         text: 'Serverless'
     },
     {
-        image: aws4,
+        icon: 'Containers',
+        folderName: 'aws-advisory',
         className: 'bottom-[32%] right-[5%]',
         text: 'Containers'
     },
     {
-        image: aws5,
+        icon: 'Management',
+        folderName: 'aws-advisory',
         className: 'bottom-[16%] right-[18%]',
         text: 'Management'
     },
     {
-        image: aws6,
+        icon: 'Networking',
+        folderName: 'aws-advisory',
         className: 'bottom-[6%] left-[42%]',
         text: 'Networking'
     },
     {
-        image: aws7,
+        icon: 'Security',
+        folderName: 'aws-advisory',
         className: 'bottom-[16%] left-[18%]',
         text: 'Security'
     },
     {
-        image: aws8,
+        icon: 'Analytics',
+        folderName: 'aws-advisory',
         className: 'bottom-[32%] left-[5%]',
         text: 'Analytics'
     },
     {
-        image: aws9,
+        icon: 'Database',
+        folderName: 'aws-advisory',
         className: 'top-[32%] left-[5%]',
         text: 'Database'
     },
     {
-        image: aws10,
+        icon: 'Compute',
+        folderName: 'aws-advisory',
         className: 'top-[14%] left-[20%]',
         text: 'Compute'
     },
 ]
-function AwsAdvisory(){
+
+let services_section = [
+    {
+        liContainerClass: 'from-[#FA7398] to-[#FDD14C]',
+        image: 'Security',
+        text: 'Security'
+    },
+    {
+        liContainerClass: 'from-[#A38DD1] to-[#F2BDE8]',
+        image: 'Database',
+        text: 'Database'
+    },
+    {
+        liContainerClass: 'from-[#8FD3F3] to-[#85F6B7]',
+        image: 'Storage',
+        text: 'Storage'
+    },
+    {
+        liContainerClass: 'from-[#A38DD1] to-[#F2BDE8]',
+        image: 'Analytics',
+        text: 'Analytics'
+    },
+    {
+        liContainerClass: 'from-[#FA7398] to-[#FDD14C]',
+        image: 'Compute',
+        text: 'Compute'
+    },
+    {
+        liContainerClass: 'from-[#8FD3F3] to-[#85F6B7]',
+        image: 'Migration',
+        text: 'Migration'
+    },
+    {
+        liContainerClass: 'from-[#AAECEA] to-[#F7D8E3]',
+        image: 'Serverless',
+        text: 'Serverless'
+    },
+    {
+        liContainerClass: 'from-[#FA7398] to-[#FDD14C]',
+        image: 'Containers',
+        text: 'Containers'
+    },
+    {
+        liContainerClass: 'from-[#DEC3FC] to-[#97C5FC]',
+        image: 'Networking',
+        text: 'Networking'
+    },
+    {
+        liContainerClass: 'from-[#AAECEA] to-[#F7D8E3]',
+        image: 'Management',
+        text: 'Management'
+    }
+]
+function AwsAdvisory() {
     console.log("this is  AwsAdvisory");
     return (
         <main>
@@ -99,56 +146,17 @@ function AwsAdvisory(){
                         </div>
 
                         <ul className="w-full flex justify-center gap-x-10 gap-y-6 flex-wrap lg:max-w-[75%] xl:max-w-[75%] 3xl:max-w-[62%]">
-                            <ServicesSectionLi
-                                liContainerClass='from-[#FA7398] to-[#FDD14C]'
-                                image={<SvgIcon name='AWS-Migration' />}
-                                text='Security'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#A38DD1] to-[#F2BDE8]'
-                                image={<SvgIcon name='AWS_9' />}
-                                text='Database'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#8FD3F3] to-[#85F6B7]'
-                                image={<SvgIcon name='AWS-Storage' />}
-                                text='Storage'
-                            />
-                            {/* <ServicesSectionLi
-                                liContainerClass='from-[#A38DD1] to-[#F2BDE8]'
-                                image={'AWS_8'}
-                                text='Analytics'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#FA7398] to-[#FDD14C]'
-                                image={'AWS_10'}
-                                text='Compute'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#8FD3F3] to-[#85F6B7]'
-                                image={'AWS_1'}
-                                text='Migration'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#AAECEA] to-[#F7D8E3]'
-                                image={'AWS_3'}
-                                text='Serverless'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#FA7398] to-[#FDD14C]'
-                                image={'AWS_4'}
-                                text='Containers'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#DEC3FC] to-[#97C5FC]'
-                                image={'AWS_6'}
-                                text='Networking'
-                            />
-                            <ServicesSectionLi
-                                liContainerClass='from-[#AAECEA] to-[#F7D8E3]'
-                                image={'AWS_5'}
-                                text='Management'
-                            /> */}
+                            {services_section.map(({ text, image, liContainerClass }) => {
+                                return (
+                                    <Fragment key={text}>
+                                        <ServicesSectionLi
+                                            liContainerClass={liContainerClass}
+                                            image={<SvgIcon folderName='aws-advisory' name={image} className='rounded-full' height='2rem' width='2rem' />}
+                                            text={text}
+                                        />
+                                    </Fragment>
+                                )
+                            })}
                         </ul>
                     </div>
                 </div>
@@ -182,6 +190,9 @@ function AwsAdvisory(){
                         </div>
                     </div>
                 </div>
+            </section>
+            <section>
+
             </section>
 
             <section className="web_services_section bg-[#1E2832]">
@@ -280,27 +291,27 @@ function AwsAdvisory(){
 
                         <ul className="content_btm max-w-2xl md:max-w-full xl:max-w-2xl 3xl:max-w-5xl grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 3xl:grid-cols-3 gap-10">
                             <AwsManageSectionLi
-                                image={globeWithCursorIcon}
+                                icon='globe-with-cursor'
                                 description='We support multiple technology stacks for different applications and also Auto Scaling, Automation and Disaster Recovery. More availability zones and redundancy.'
                             />
                             <AwsManageSectionLi
-                                image={ideaBrainIcon}
+                                icon='idea-brain'
                                 description='We provide you with in-depth knowledge about AWS services, helping you to design, implement, deploy and maintain any application on AWS.'
                             />
                             <AwsManageSectionLi
-                                image={presentationIcon}
+                                icon='presentation'
                                 description='We implement AWS best practices for any kind of environment we create.'
                             />
                             <AwsManageSectionLi
-                                image={cloudWithLockIcon}
+                                icon='cloud-with-lock-icon'
                                 description='We follow the best AWS practices for security, optimization and high- availability applications.'
                             />
                             <AwsManageSectionLi
-                                image={rocketIcon}
+                                icon='rocket'
                                 description='We provide assistance to migrate and deploy any application on AWS.'
                             />
                             <AwsManageSectionLi
-                                image={customerServiceIcon}
+                                icon='customer-service'
                                 description='24/7 World Class Support'
                             />
 
@@ -452,9 +463,7 @@ function AwsAdvisory(){
                                 <div className="box_btm flex flex-col gap-2">
                                     <div className="btm_content grid grid-flow-col gap-2">
                                         <div className="btm_icon">
-                                            {/* <img src="./assets/aws_advisory/icon_white.svg" alt="icon"> */}
                                             <CheckCircleIcon className='size-6 fill-[#fff] stroke-[#1e73bb]' />
-
                                         </div>
                                         <div className="btm_txt flex flex-col gap-1">
                                             <span className="text-base text-[#FFFFFF] font-semibold">Increased Savings</span>
@@ -525,7 +534,6 @@ const ServicesSectionLi = (props) => {
         <li key={`${image}_${text}_${id}`} className={`rounded-full bg-gradient-to-r ${liContainerClass} shadow-[0_0_35px_0_#AEAEAE03] p-[2px]`}>
             <div className="content flex items-center gap-2 p-3 bg-[#FBFBFB] rounded-full">
                 <div className="icon rounded-full overflow-hidden">
-                    {/* <img src={image} alt="AWS_image" /> */}
                     {image}
                 </div>
                 <span className="text-[#3E4048] text-xs font-semibold">{text}</span>
@@ -578,10 +586,13 @@ const EasySectionLi = (props) => {
 }
 
 const AwsManageSectionLi = (props) => {
-    let { image = '', description = '' } = props
+    let { image = '', description = '', icon = '' } = props
     return <li className="btm_box flex flex-col gap-4">
         <div className="box_icon">
-            <img src={image} alt={`aws manage image`} />
+            {
+                icon ? <SvgIcon name={icon} />
+                    : <img src={image} alt={`aws manage image`} />
+            }
         </div>
         <div className="btm_txt">
             <p className="text-[#3E4048] text-base">

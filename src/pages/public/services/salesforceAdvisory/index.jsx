@@ -1,74 +1,58 @@
 import AdvisoryHeroSection from "../advisoryHeroSection"
 import centersalesforceAdvisoryImage from '@/assets/image/center-salesforce-advisory.jpg'
-import slackImage from '@/assets/svg/slack.svg'
-import mulesoftImage from '@/assets/svg/mulesoft.svg'
-import netZoneImage from '@/assets/svg/products-sustainability-day.svg'
-import slaesImage from '@/assets/svg/sales-day.svg'
-import managementImage from '@/assets/svg/management.svg'
-import ServiceImage from '@/assets/svg/service-day.svg'
-import PlatformImage from '@/assets/svg/platform-day.svg'
-import SalesforceImage from '@/assets/svg/sales-day.svg'
-import dataCloudImage from '@/assets/svg/data-cloud.svg'
-import analyticsImage from '@/assets/svg/analytics.svg'
 import { ArrowRightCircleIcon, CheckCircleIcon } from "@heroicons/react/24/outline"
 import BookACallChatLayout from '@/layouts/bookAcallChatLayout'
 import dotCircleImage from '@/assets/webp/dot_circle.webp'
-import SalesforceImplementationIcon from '@/assets/svg/speedMetarWithMan.svg'
-import ForceDevelopmentIcon from '@/assets/svg/laptopDevelopment.svg'
-import SalesforceAutomationIcon from '@/assets/svg/settingSolution.svg'
-import ExperienceIcon from '@/assets/svg/exchange.svg'
-import MigrationIcon from '@/assets/svg/lightening.svg'
-import AnalyticsIcon from '@/assets/svg/data-analytics-circle.svg'
 import SvgIcon from "@/assets/svg"
 
 let salesforceAdvisoryCircleData = [
     {
-        image: slackImage,
+        icon: 'slack',
         className: 'top-[6%] left-[44%]',
         text: 'Slack'
     },
     {
-        image: mulesoftImage,
+        icon: 'mulesoft',
         className: 'top-[16%] right-[18%]',
         text: 'Mulesoft'
     },
     {
-        image: netZoneImage,
+        icon: 'products-sustainability-day',
         className: 'top-[32%] right-[5%]',
         text: 'Net Zero'
     },
     {
-        image: slaesImage,
+        icon: 'sales-day',
         className: 'bottom-[32%] right-[5%]',
         text: 'Sales'
     },
     {
-        image: managementImage,
+        icon: 'management',
         className: 'bottom-[16%] right-[18%]',
         text: 'Management'
     },
     {
-        image: ServiceImage,
+        icon: 'service-day',
         className: 'bottom-[6%] left-[42%]',
         text: 'Service'
     },
     {
-        image: PlatformImage,
+        icon: 'platform-day',
         className: 'bottom-[16%] left-[18%]',
         text: 'Platform'
     },
     {
-        image: SalesforceImage,
+        icon: 'sales-day',
         className: 'bottom-[32%] left-[5%]',
         text: 'Salesforce'
     },
     {
-        image: dataCloudImage,
+        icon: 'data-cloud',
         className: 'top-[32%] left-[5%]',
         text: 'Data Cloud'
     },
     {
-        image: analyticsImage,
+        icon: 'analytics',
         className: 'top-[14%] left-[20%]',
         text: 'Analytics'
     },
@@ -155,32 +139,32 @@ const SalesforceAdvisory = () => {
 
                         <ul class="content-btm grid md:grid-cols-2 lg:grid-cols-3 gap-10 3xl:gap-20">
                             <ServiceSectionCard
-                                image={SalesforceImplementationIcon}
+                                icon='speedMetarWithMan'
                                 title='Salesforce Implementation'
                                 description='Experienced and certified salesforce consultants delivering solutions driving customer and business values.'
                             />
                             <ServiceSectionCard
-                                image={ForceDevelopmentIcon}
+                                icon='laptopDevelopment'
                                 title='Force.com Development'
                                 description='Build apps for all your business divisions with the mobile first salesforce platform.'
                             />
                             <ServiceSectionCard
-                                image={SalesforceAutomationIcon}
+                                icon='settingSolution'
                                 title='Salesforce Automation'
                                 description='Enhance business process & improve productivity by complete automation using salesforce platform tools.'
                             />
                             <ServiceSectionCard
-                                image={ExperienceIcon}
+                                icon='exchange'
                                 title='Lightning Experience'
                                 description='Enabling and migrating users to the new Salesforce lightning experience.'
                             />
                             <ServiceSectionCard
-                                image={MigrationIcon}
+                                icon='lightening'
                                 title='Data Migration'
                                 description='Data migration from your legacy on-premise application or cloud based SaaS to Salesforce platform.'
                             />
                             <ServiceSectionCard
-                                image={AnalyticsIcon}
+                                icon='data-analytics-circle'
                                 title='Advanced Analytics'
                                 description='Enhance business process & improve productivity by complete automation using salesforce platform tools.'
                             />
@@ -458,12 +442,14 @@ const EasySectionCasd = (props) => {
 }
 
 const ServiceSectionCard = (props) => {
-    let { image = '', description = '', title = '' } = props
+    let { image = '', description = '', title = '', icon = '' } = props
     return (
         <li class="px-8 py-10 bg-[#FFFFFF] shadow-[0px_10px_32px_0_#040C2F0D] rounded-[14px] flex flex-col justify-between">
             <div class="card_top flex flex-col gap-6">
                 <div class="btm_icon">
-                    <img src={image} alt="businessman" />
+                    {icon ? <SvgIcon name={icon} />
+                        : <img src={image} alt="businessman" />
+                    }
                 </div>
                 <div class="txt">
                     <div class="title">
@@ -480,7 +466,6 @@ const ServiceSectionCard = (props) => {
                 <a class="flex items-center gap-3" href="">
                     <span class="text-[#0176D3] font-semibold">Learn More</span>
                     <ArrowRightCircleIcon fill='#0176D3' color="white" className="w-7 h-7" />
-                    {/* <img src="./assets/salesforce_advisory/arrow_link.svg" alt="arrow_link" /> */}
                 </a>
             </div>
         </li>

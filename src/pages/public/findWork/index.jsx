@@ -2,10 +2,12 @@ import { InputField, SelectField } from "@/components/formFields"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 import { useDispatch, useSelector } from "react-redux"
 import { getPublicJobs } from "@/globalStates/actions/jobsAction"
-import { useEffect } from "react"
+import { Fragment, useEffect } from "react"
 import { isArray, isEmpty } from "lodash"
 import NoDataFoundMessage from "@/constants/NoDataFoundMessage"
 import CustomLoader from "@/layouts/skeletonLoaders"
+import TimeAgo from "@/components/timeAgo"
+import SvgIcon from "@/assets/svg"
 
 const FindWork = () => {
     const dispatch = useDispatch()
@@ -93,7 +95,7 @@ const FindWork = () => {
                                                     publicJobs.map((job) => {
                                                         return (
                                                             <Fragment key={`public_job${job?.uuid}`}>
-                                                                <AvailableJobContainer />
+                                                                <AvailableJobContainer details={job} />
                                                             </Fragment>
                                                         )
                                                     })
@@ -114,65 +116,68 @@ const FindWork = () => {
 export default FindWork
 
 
-const AvailableJobContainer = () => {
+const AvailableJobContainer = (props) => {
+    let { details } = props
     return (
         <li className="p-8 border border-[#F1E7F8] rounded-[16px] bg-[#FFFFFF] flex flex-col gap-6">
             <div className="details_top flex flex-wrap justify-between">
                 <div className="top_left flex items-center gap-4">
                     <div className="job_img">
-                        <img src="./assets/find_work/job_logo.webp" alt="job_logo" />
+                        <SvgIcon name='find_job_logo' />
                     </div>
                     <div className="job_details flex flex-col gap-2">
-                        <span className="text-[#17181C] text-xl font-bold">Tech Lead - Frontend Engineeer</span>
+                        <span className="text-[#17181C] text-xl font-bold">{details?.job_experience_level} - {details?.job_category}</span>
                         <span className="text-[#3E4048] font-semibold text-sm">Prospa</span>
                     </div>
                 </div>
 
-                <div className="top_right flex gap-1 pl-14 sm:pl-16 md:pl-0">
-                    <span className="text-[#6D6F79] text-sm">9</span>
-                    <span className="text-[#6D6F79] text-sm">min ago</span>
+                <div className="top_right flex gap-1 pl-14 sm:pl-16 md:pl-0 items-center">
+                    <TimeAgo className='text-center align-middle' date={details?.created_at} />
                 </div>
             </div>
 
             <ul className="tags flex flex-wrap items-center gap-2">
                 <li className="bg-[#ECEFFD] px-2 py-1 rounded-full flex items-center gap-2">
                     <div>
-                        <img src="./assets/find_work/moneys.webp" alt="moneys" />
+                        <img src={''} alt="moneys" />
                     </div>
                     <div>
-                        <span className="text-[#4361EE] text-sm">$60k - $90k</span>
-                    </div>
-                </li>
-                <li className="bg-[#ECEFFD] px-2 py-1 rounded-full flex items-center gap-2">
-                    <div>
-                        <img src="./assets/find_work/briefcase.webp" alt="briefcase" />
-                    </div>
-                    <div>
-                        <span className="text-[#4361EE] text-sm">Full-time</span>
+                        <span className="text-[#4361EE] text-sm">
+                            {details?.job_pay_type === "Pay per hour" ?
+                                details?.job_pay_value
+                                : `$${details?.job_pay_value}`
+                            }
+                        </span>
                     </div>
                 </li>
                 <li className="bg-[#ECEFFD] px-2 py-1 rounded-full flex items-center gap-2">
                     <div>
-                        <img src="./assets/find_work/clock.webp" alt="clock" />
+                        <img src={''} alt="briefcase" />
                     </div>
                     <div>
-                        <span className="text-[#4361EE] text-sm">1 month</span>
+                        <span className="text-[#4361EE] text-sm">{details?.job_time_requirement}</span>
                     </div>
                 </li>
                 <li className="bg-[#ECEFFD] px-2 py-1 rounded-full flex items-center gap-2">
                     <div>
-                        <img src="./assets/find_work/location.webp" alt="location" />
+                        <img src={''} alt="clock" />
                     </div>
                     <div>
-                        <span className="text-[#4361EE] text-sm">Anywhere</span>
+                        <span className="text-[#4361EE] text-sm">{details?.job_duration}</span>
+                    </div>
+                </li>
+                <li className="bg-[#ECEFFD] px-2 py-1 rounded-full flex items-center gap-2">
+                    <div>
+                        <img src={''} alt="location" />
+                    </div>
+                    <div>
+                        <span className="text-[#4361EE] text-sm">{details?.get_job_qualification?.country || 'Anywhere'}</span>
                     </div>
                 </li>
             </ul>
 
             <div className="desc">
-                <span className="text-[#3E4048]">We want to move a large number of customer portal users
-                    (users who self-register via a pre-existing Contact
-                    record).</span>
+                <span className="text-[#3E4048]">{details?.job_description.substring(0, 150)}...</span>
             </div>
 
             <div className="apply_btn w-full">
