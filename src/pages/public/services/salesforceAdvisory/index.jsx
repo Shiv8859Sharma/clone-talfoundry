@@ -70,17 +70,17 @@ const SalesforceAdvisory = () => {
                 AdvisoryCircleList={salesforceAdvisoryCircleData}
                 type='salesforce'
             />
-            <section class="easy_section">
-                <div class="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
-                    <div class="easy_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-6 md:gap-8">
-                        <div class="easy_top">
-                            <div class="heading">
-                                <span class="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Getting started is Easy
+            <section className="easy_section">
+                <div className="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
+                    <div className="easy_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-6 md:gap-8">
+                        <div className="easy_top">
+                            <div className="heading">
+                                <span className="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Getting started is Easy
                                 </span>
                             </div>
                         </div>
 
-                        <ul class="easy_btm grid lg:grid-cols-3 lg:gap-6 xl:gap-16">
+                        <ul className="easy_btm grid lg:grid-cols-3 lg:gap-6 xl:gap-16">
                             <EasySectionCasd
                                 count='1'
                                 countBoxColor='bg-[#0B5BAE]'
@@ -103,18 +103,18 @@ const SalesforceAdvisory = () => {
                     </div>
                 </div>
             </section>
-            <section class="services_section bg-[#F5FAFF]">
-                <div class="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
-                    <div class="services_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-8">
-                        <div class="content_top flex flex-col gap-6">
-                            <div class="heading">
-                                <span class="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Salesforce Advisory Services
+            <section className="services_section bg-[#F5FAFF]">
+                <div className="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
+                    <div className="services_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-8">
+                        <div className="content_top flex flex-col gap-6">
+                            <div className="heading">
+                                <span className="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Salesforce Advisory Services
                                 </span>
                             </div>
 
-                            <div class="subHeading flex flex-col lg:flex-row gap-10">
-                                <div class="subLeft">
-                                    <p class="text-[#3E4048]">
+                            <div className="subHeading flex flex-col lg:flex-row gap-10">
+                                <div className="subLeft">
+                                    <p className="text-[#3E4048]">
                                         Talfoundry is one of the leading Salesforce consulting
                                         companies with experience and expertise to drive
                                         Salesforce-powered digital transformation for your
@@ -124,8 +124,8 @@ const SalesforceAdvisory = () => {
                                         transform businesses for the future by
                                     </p>
                                 </div>
-                                <div class="subRight">
-                                    <p class="text-[#3E4048]">
+                                <div className="subRight">
+                                    <p className="text-[#3E4048]">
                                         connecting disparate systems and taking manual work out of
                                         internal processes. Our next-generation strategies improve
                                         customer experience and employee productivity. We offer a
@@ -137,7 +137,7 @@ const SalesforceAdvisory = () => {
                             </div>
                         </div>
 
-                        <ul class="content-btm grid md:grid-cols-2 lg:grid-cols-3 gap-10 3xl:gap-20">
+                        <ul className="content-btm grid md:grid-cols-2 lg:grid-cols-3 gap-10 3xl:gap-20">
                             <ServiceSectionCard
                                 icon='speedMetarWithMan'
                                 title='Salesforce Implementation'
@@ -173,17 +173,17 @@ const SalesforceAdvisory = () => {
                 </div>
             </section>
 
-            <section class="competencies section">
-                <div class="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
-                    <div class="competencies_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-10 3xl:gap-20">
-                        <div class="content_top flex flex-col gap-6">
-                            <div class="heading">
-                                <span class="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Our Salesforce Competencies
+            <section className="competencies section">
+                <div className="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
+                    <div className="competencies_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-10 3xl:gap-20">
+                        <div className="content_top flex flex-col gap-6">
+                            <div className="heading">
+                                <span className="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Our Salesforce Competencies
                                 </span>
                             </div>
                         </div>
 
-                        <ul class="content_btm grid md:grid-cols-2 lg:grid-cols-3">
+                        <ul className="content_btm grid md:grid-cols-2 lg:grid-cols-3">
                             <CompetenciesSectionCard
                                 iconName='cloud-with-underscore'
                                 iconClassName='fill-[#9F63C6]'
@@ -226,16 +226,16 @@ const SalesforceAdvisory = () => {
                 </div>
             </section>
 
-            <section class="consulting_section bg-[#F5FAFF]">
-                <div class="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
-                    <div class="consulting_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-20">
-                        <div class="content_top flex flex-col lg:flex-row gap-10">
-                            <div class="heading">
-                                <span class="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Why Talfoundry for Salesforce Consulting Services
+            <section className="consulting_section bg-[#F5FAFF]">
+                <div className="default_container relative max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
+                    <div className="consulting_content py-16 md:py-20 lg:py-24 xl:py-28 flex flex-col gap-20">
+                        <div className="content_top flex flex-col lg:flex-row gap-10">
+                            <div className="heading">
+                                <span className="text-3xl lg:text-4xl 3xl:text-5xl 3xl:leading-[58px] text-[#032D60] font-semibold">Why Talfoundry for Salesforce Consulting Services
                                 </span>
                             </div>
-                            <div class="subHeading flex flex-col gap-4">
-                                <p class="text-[#181818]">
+                            <div className="subHeading flex flex-col gap-4">
+                                <p className="text-[#181818]">
                                     Talfoundry is a Salesforce consulting partner equipped with
                                     certified &amp; experienced resources to understand your unique
                                     business requirements and advice on best fit Salesforce
@@ -243,7 +243,7 @@ const SalesforceAdvisory = () => {
                                     possibilities offered by Salesforce products and its platform
                                     to improve your business operations.
                                 </p>
-                                <p class="text-[#181818]">
+                                <p className="text-[#181818]">
                                     Talfoundry assists organizations to get all the benefits from
                                     Salesforce standard functionalities and also develop custom
                                     Salesforce applications using Force com to satisfy unique
@@ -253,7 +253,7 @@ const SalesforceAdvisory = () => {
                             </div>
                         </div>
 
-                        <ul class="content_btm grid md:grid-cols-2 lg:grid-cols-3">
+                        <ul className="content_btm grid md:grid-cols-2 lg:grid-cols-3">
                             <ConsultingSectionCard
                                 iconName='idea-white-circle'
                                 description='Ability to identify your business pain points and develop solutions to drive customer value.'
@@ -283,122 +283,122 @@ const SalesforceAdvisory = () => {
                 </div>
             </section>
 
-            <section class="pricing_section">
-                <div class="default_container h-full max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
-                    <div class="pricing_content py-16 md:py-20 lg:py-24 flex flex-col gap-6 md:gap-14 lg:gap-16">
-                        <div class="pricing_top flex flex-col gap-4 md:items-center">
-                            <div class="pricing_heading flex justify-center md:gap-2">
-                                <span class="text-3xl md:text-4xl 3xl:text-6xl xl:text-5xl 3xl:leading-[74px] xl:leading-[58px] text-[#17181C] font-semibold">Flexible Pricing scaling teams</span>
+            <section className="pricing_section">
+                <div className="default_container h-full max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
+                    <div className="pricing_content py-16 md:py-20 lg:py-24 flex flex-col gap-6 md:gap-14 lg:gap-16">
+                        <div className="pricing_top flex flex-col gap-4 md:items-center">
+                            <div className="pricing_heading flex justify-center md:gap-2">
+                                <span className="text-3xl md:text-4xl 3xl:text-6xl xl:text-5xl 3xl:leading-[74px] xl:leading-[58px] text-[#17181C] font-semibold">Flexible Pricing scaling teams</span>
                             </div>
-                            <div class="pricing_subTitle md:max-w-[60%] md:mx-auto">
-                                <p class="text-[#3E4048] text-sm md:text-base text-center">
+                            <div className="pricing_subTitle md:max-w-[60%] md:mx-auto">
+                                <p className="text-[#3E4048] text-sm md:text-base text-center">
                                     Our transparent pricing means you always know how much you’ll
                                     pay and what you’re paying for.
                                 </p>
                             </div>
                         </div>
 
-                        <div class="pricing_btm grid gap-4 md:w-2/3 md:mx-auto md:gap-8 lg:w-auto lg:grid-cols-3 3xl:gap-20 xl:gap-8">
-                            <div class="pricing_box flex flex-col gap-6 p-8 lg:py-12 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl">
-                                <div class="box_top flex flex-col gap-3 md:gap-4">
-                                    <span class="text-2xl md:text-3xl text-[#17181C] font-semibold">Part-time 💫</span>
-                                    <span class="text-[#17181C] font-semibold text-3xl xl:text-4xl 3xl:text-5xl">From $40<span class="font-medium text-sm">/Per Hour</span></span>
-                                    <span class="text-[#4361EE] font-medium text-sm">20 HOURS WEEKLY</span>
+                        <div className="pricing_btm grid gap-4 md:w-2/3 md:mx-auto md:gap-8 lg:w-auto lg:grid-cols-3 3xl:gap-20 xl:gap-8">
+                            <div className="pricing_box flex flex-col gap-6 p-8 lg:py-12 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl">
+                                <div className="box_top flex flex-col gap-3 md:gap-4">
+                                    <span className="text-2xl md:text-3xl text-[#17181C] font-semibold">Part-time 💫</span>
+                                    <span className="text-[#17181C] font-semibold text-3xl xl:text-4xl 3xl:text-5xl">From $40<span className="font-medium text-sm">/Per Hour</span></span>
+                                    <span className="text-[#4361EE] font-medium text-sm">20 HOURS WEEKLY</span>
                                 </div>
 
-                                <button class="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
+                                <button className="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
                                     Purchase Now
                                 </button>
 
-                                <div class="box_btm flex flex-col gap-2">
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                <div className="box_btm flex flex-col gap-2">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#17181C] font-semibold">Increased Savings</span>
-                                            <span class="text-[#3E4048] text-sm">You still pay a cheaper rate, without feeling like
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#17181C] font-semibold">Increased Savings</span>
+                                            <span className="text-[#3E4048] text-sm">You still pay a cheaper rate, without feeling like
                                                 you’re overcommitting.</span>
                                         </div>
                                     </div>
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#17181C] font-semibold">Stability without overcommitting</span>
-                                            <span class="text-[#3E4048] text-sm">Benefit from a dedicated resource, available to you for
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#17181C] font-semibold">Stability without overcommitting</span>
+                                            <span className="text-[#3E4048] text-sm">Benefit from a dedicated resource, available to you for
                                                 the agreed hours.</span>
                                         </div>
                                     </div>
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#17181C] font-semibold">Developers stability</span>
-                                            <span class="text-[#3E4048] text-sm">A steady and stable workflow results in more effective
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#17181C] font-semibold">Developers stability</span>
+                                            <span className="text-[#3E4048] text-sm">A steady and stable workflow results in more effective
                                                 work.</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="pricing_box relative flex flex-col gap-6 p-8 lg:py-12 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl bg-[#D9EDFC]">
-                                <div class="box_top flex flex-col gap-3 md:gap-4">
-                                    <span class="text-2xl md:text-3xl text-[#032D60] font-semibold">Full-time 🚀</span>
-                                    <span class="text-[#032D60] font-semibold text-3xl xl:text-4xl 3xl:text-5xl">From $40<span class="font-medium text-sm">/Per Hour</span></span>
-                                    <span class="text-[#032D60] font-medium text-sm">40 HOURS WEEKLY</span>
+                            <div className="pricing_box relative flex flex-col gap-6 p-8 lg:py-12 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl bg-[#D9EDFC]">
+                                <div className="box_top flex flex-col gap-3 md:gap-4">
+                                    <span className="text-2xl md:text-3xl text-[#032D60] font-semibold">Full-time 🚀</span>
+                                    <span className="text-[#032D60] font-semibold text-3xl xl:text-4xl 3xl:text-5xl">From $40<span className="font-medium text-sm">/Per Hour</span></span>
+                                    <span className="text-[#032D60] font-medium text-sm">40 HOURS WEEKLY</span>
                                 </div>
-                                <button class="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
+                                <button className="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
                                     Purchase Now
                                 </button>
-                                <div class="box_btm flex flex-col gap-2">
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                <div className="box_btm flex flex-col gap-2">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#032D60] font-semibold">Increased Savings</span>
-                                            <span class="text-[#181818] text-sm">A full-time developer working only with you, at our
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#032D60] font-semibold">Increased Savings</span>
+                                            <span className="text-[#181818] text-sm">A full-time developer working only with you, at our
                                                 lowest hourly rate.</span>
                                         </div>
                                     </div>
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#032D60] font-semibold">Maximised stability</span>
-                                            <span class="text-[#181818] text-sm">Benefit from a dedicated resource, available only for
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#032D60] font-semibold">Maximised stability</span>
+                                            <span className="text-[#181818] text-sm">Benefit from a dedicated resource, available only for
                                                 your engagement.</span>
                                         </div>
                                     </div>
-                                    <div class="btm_content grid grid-flow-col gap-2">
-                                        <div class="btm_icon">
+                                    <div className="btm_content grid grid-flow-col gap-2">
+                                        <div className="btm_icon">
                                             <CheckCircleIcon className='size-6 fill-[#539FE5] stroke-[#fff]' />
                                         </div>
-                                        <div class="btm_txt flex flex-col gap-1">
-                                            <span class="text-base text-[#032D60] font-semibold">Stability for your resource</span>
-                                            <span class="text-[#181818] text-sm">A steady and stable workflow results in more effective
+                                        <div className="btm_txt flex flex-col gap-1">
+                                            <span className="text-base text-[#032D60] font-semibold">Stability for your resource</span>
+                                            <span className="text-[#181818] text-sm">A steady and stable workflow results in more effective
                                                 work getting done.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="absolute top-0 right-0">
+                                <div className="absolute top-0 right-0">
                                     <img src={dotCircleImage} alt="dot_circle" />
                                 </div>
                             </div>
 
-                            <div class="pricing_box">
-                                <div class="last_box flex flex-col gap-6 py-12 px-10 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl">
-                                    <div class="box_top flex flex-col gap-3 md:gap-4">
-                                        <span class="text-[28px] md:text-3xl text-[#17181C] font-semibold">Need something more flexible?</span>
+                            <div className="pricing_box">
+                                <div className="last_box flex flex-col gap-6 py-12 px-10 lg:px-4 shadow-[0px_10px_32px_#040C2F0D] rounded-3xl">
+                                    <div className="box_top flex flex-col gap-3 md:gap-4">
+                                        <span className="text-[28px] md:text-3xl text-[#17181C] font-semibold">Need something more flexible?</span>
 
-                                        <span class="text-[#3E4048] text-sm">We have plans from 1/hour a day. Contact us for more
+                                        <span className="text-[#3E4048] text-sm">We have plans from 1/hour a day. Contact us for more
                                             details.</span>
                                     </div>
-                                    <button class="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
+                                    <button className="px-6 w-full py-3 font-semibold text-[#0176D3] text-sm md:text-base rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#0176D3] lg:hover:text-[#ECEFFD] border-2 border-[#0176D3]">
                                         Let's chat
                                     </button>
                                 </div>
@@ -423,16 +423,16 @@ export default SalesforceAdvisory
 const EasySectionCasd = (props) => {
     let { count = '', countBoxColor = '', title = '', description = '' } = props
     return (
-        <li class="btm_box flex flex-col gap-6 xl:px-8 py-10">
-            <div class={`box_icon w-[60px] h-[60px] rounded-full flex justify-center items-center ${countBoxColor}`}>
-                <span class="text-[#ECEFFD] text-2xl font-bold">{count}</span>
+        <li className="btm_box flex flex-col gap-6 xl:px-8 py-10">
+            <div className={`box_icon w-[60px] h-[60px] rounded-full flex justify-center items-center ${countBoxColor}`}>
+                <span className="text-[#ECEFFD] text-2xl font-bold">{count}</span>
             </div>
-            <div class="box_text lex flex-col gap-2">
-                <div class="heading">
-                    <span class="text-[#032D60] text-3xl leading-[40px] font-bold">{title}</span>
+            <div className="box_text lex flex-col gap-2">
+                <div className="heading">
+                    <span className="text-[#032D60] text-3xl leading-[40px] font-bold">{title}</span>
                 </div>
-                <div class="subHeading">
-                    <p class="text-[#181818]">
+                <div className="subHeading">
+                    <p className="text-[#181818]">
                         {description}
                     </p>
                 </div>
@@ -444,27 +444,27 @@ const EasySectionCasd = (props) => {
 const ServiceSectionCard = (props) => {
     let { image = '', description = '', title = '', icon = '' } = props
     return (
-        <li class="px-8 py-10 bg-[#FFFFFF] shadow-[0px_10px_32px_0_#040C2F0D] rounded-[14px] flex flex-col justify-between">
-            <div class="card_top flex flex-col gap-6">
-                <div class="btm_icon">
+        <li className="px-8 py-10 bg-[#FFFFFF] shadow-[0px_10px_32px_0_#040C2F0D] rounded-[14px] flex flex-col justify-between">
+            <div className="card_top flex flex-col gap-6">
+                <div className="btm_icon">
                     {icon ? <SvgIcon name={icon} />
                         : <img src={image} alt="businessman" />
                     }
                 </div>
-                <div class="txt">
-                    <div class="title">
-                        <span class="text-[#032D60] font-bold text-3xl">{title}</span>
+                <div className="txt">
+                    <div className="title">
+                        <span className="text-[#032D60] font-bold text-3xl">{title}</span>
                     </div>
-                    <div class="subTitle">
-                        <p class="text-[#181818]">
+                    <div className="subTitle">
+                        <p className="text-[#181818]">
                             {description}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="link">
-                <a class="flex items-center gap-3" href="">
-                    <span class="text-[#0176D3] font-semibold">Learn More</span>
+            <div className="link">
+                <a className="flex items-center gap-3" href="">
+                    <span className="text-[#0176D3] font-semibold">Learn More</span>
                     <ArrowRightCircleIcon fill='#0176D3' color="white" className="w-7 h-7" />
                 </a>
             </div>
@@ -476,16 +476,16 @@ const CompetenciesSectionCard = (props) => {
     // 
     let { iconName = '', title = '', description = '', containerClass = '', iconClassName = '' } = props
     return (
-        <li class={`px-8 py-10 flex flex-col gap-6 border-[#BBBDC8] ${containerClass}`}>
-            <div class="btm_icon">
+        <li className={`px-8 py-10 flex flex-col gap-6 border-[#BBBDC8] ${containerClass}`}>
+            <div className="btm_icon">
                 {iconName && <SvgIcon name={iconName} className={`stroke-[#9F63C6] ${iconClassName}`} />}
             </div>
-            <div class="txt flex flex-col gap-3">
-                <div class="title">
-                    <span class="text-[#17181C] font-bold text-3xl">{title}</span>
+            <div className="txt flex flex-col gap-3">
+                <div className="title">
+                    <span className="text-[#17181C] font-bold text-3xl">{title}</span>
                 </div>
-                <div class="subTitle">
-                    <p class="text-[#3E4048]">
+                <div className="subTitle">
+                    <p className="text-[#3E4048]">
                         {description}
                     </p>
                 </div>
@@ -498,15 +498,15 @@ const ConsultingSectionCard = (props) => {
     let { iconName = '', description = '', iconClassName = '' } = props
 
     return (
-        <li class="px-8 py-10 flex flex-col gap-6">
-            <div class="btm_icon">
+        <li className="px-8 py-10 flex flex-col gap-6">
+            <div className="btm_icon">
                 {/* <img src={image} alt="idea" /> */}
                 {iconName && <SvgIcon name={iconName} className={iconClassName} />}
 
             </div>
-            <div class="txt flex flex-col gap-3">
-                <div class="subTitle">
-                    <p class="text-[#3E4048]">
+            <div className="txt flex flex-col gap-3">
+                <div className="subTitle">
+                    <p className="text-[#3E4048]">
                         {description}
                     </p>
                 </div>

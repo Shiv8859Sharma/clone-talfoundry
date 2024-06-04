@@ -101,7 +101,7 @@ const BookACallChatLayout = (props) => {
                                     <div className="companyEmail flex flex-col gap-2">
                                         <InputField
                                             label='Your Company Email'
-                                            name='email'
+                                            name='company_email'
                                             type='email'
                                             labelClass={'text-[#17181C] text-sm font-semibold'}
                                             inputContainerClass={'bg-white text-[#17181C] border border-[#BBBDC899] px-5 py-2 rounded-full text-sm'}

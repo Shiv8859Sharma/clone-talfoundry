@@ -15,6 +15,7 @@ import hero2 from '@/assets/webp/hero_2.webp'
 import hero3 from '@/assets/webp/hero_3.webp'
 import { useEffect, useState } from 'react'
 import TextTypewriter from '@/components/textTypeWrite'
+import SvgIcon from "@/assets/svg"
 
 let bounceImage = [hero1, hero2, hero3]
 let typingText = ['Engineers', 'Developers', 'Designers', 'Architects', 'Talents',]

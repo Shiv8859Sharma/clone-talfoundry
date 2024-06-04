@@ -25,10 +25,9 @@ const useNetworkStatus = () => {
 
     useEffect(() => {
         const handleConnectionChange = (e) => {
-            console.log(e.type, "e");
-            if(e.type === 'online'){
-                navigate(-1);
-            }else{
+            if (e.type === 'online') {
+                navigate('/');
+            } else {
                 navigate('/network-error');
             }
         };
@@ -42,8 +41,8 @@ const useNetworkStatus = () => {
             window.removeEventListener('offline', handleConnectionChange);
 
         };
-    }, [navigate]);
-    
+    }, [navigator.onLine]);
+
     return isConnected;
 };
 

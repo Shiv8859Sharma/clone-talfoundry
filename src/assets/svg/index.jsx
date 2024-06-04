@@ -2,10 +2,10 @@ import React from 'react';
 
 export const ImportIcon = (name, folderName, outSide) => {
   if(outSide){
-    return React.lazy(() => import(`${outSide}/${folderName}/${name}.svg?react`))
+    return React.lazy(() => import(/* @vite-ignore */ `${outSide}/${folderName}/${name}.svg?react`))
   }
   if (folderName) {
-    return React.lazy(() => import(`./${folderName}/${name}.svg?react`))
+    return React.lazy(() => import(/* @vite-ignore */ `./${folderName}/${name}.svg?react`))
   }
   return React.lazy(() => import(`./${name}.svg?react`))
 }

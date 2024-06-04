@@ -13,8 +13,18 @@ export const removeAuthToken = (payload) => ({
 export const loginUser = (payload) => ({
     type: 'LOGIN',
     method: 'post',
-    payload,
+    data: payload,
     URLEndPoint: 'LOGIN',
+    axiosService: true,
+    toaster: {
+        loading: true
+    }
+})
+
+export const logOutUser = () => ({
+    type: 'LOGOUT',
+    method: "delete",
+    URLEndPoint: 'LOGOUT',
     axiosService: true,
     toaster: {
         loading: true

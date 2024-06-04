@@ -6,6 +6,7 @@ import { FormDetails } from "./formDetails";
 import { publicFreelancerUserList } from './freelancerUser'
 import loaderReducer from "./loader";
 import { publicJobs } from "./Jobs";
+import { notifications } from "./notifications";
 
 export default combineReducers({
     auth: AuthDetails,
@@ -15,4 +16,5 @@ export default combineReducers({
     publicFreelancerUserList,
     loader: loaderReducer,
     publicJobs,
+    notifications
 })

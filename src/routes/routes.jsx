@@ -42,13 +42,32 @@ export const PublicRoutes = {
 
 export const CloudExpertRoutes = {
     children: [
-        { path: "/", element: <p>CE Dashboard</p> },
+        { path: "", element: <p>CE Dashboard</p> },
+        { path: "/find-work", element: <p>Find Work</p> },
+        { path: "/my-jobs", element: <p>My jobs</p> },
+        { path: "/all-contracts", element: <p>All contracts</p> },
+        { path: "/transactions", element: <p>Transactions</p> },
+        { path: "/analytics", element: <p>Analytics</p> },
+        { path: "/settings", element: <p>Settings</p> },
+        { path: "/messages", element: <p>CE Messages</p> },
+        { path: "/notifications", element: <p>CE notifications</p> },
+        { path: "/find-work", element: <p>CE Dashboard</p> },
+
     ],
 };
 
 export const ProjectManagerRoutes = {
     children: [
         { path: "/", element: <p>Pm Dashboard</p> },
+        { path: "/find-freelancers/:tab", element: <p>Find Freelancer</p> },
+        { path: "/analytics", element: <p>Analytics</p> },
+        { path: "/post-a-job", element: <p>Post a job</p> },
+        { path: "/my-jobs", element: <p>My jobs</p> },
+        { path: "/my-proposals", element: <p>My proposals</p> },
+        { path: "/all-contracts", element: <p>All contracts</p> },
+        { path: "/transactions", element: <p>Transactions</p> },
+        { path: "/notifications", element: <p>Notifications</p> },
+        { path: "/settings", element: <p>Pm settings</p> },
     ],
 };
 
