@@ -13,9 +13,13 @@ import { setFormFieldErrors } from '@/globalStates/actions/formAction';
 import { setAuthToken, loginUser } from '@/globalStates/actions/authAction';
 import { popupClose, popupOpen } from '@/globalStates/actions/PopupAction';
 import { InputField, CheckboxField } from '@/components/formFields';
+import { SpinLoader } from '../../components/loader';
+import { GradientButton } from '../../components/buttons';
 
 function LoginPage() {
     const formDetails = useSelector(state => state?.FormDetails)
+    const isLoading = useSelector(state => state?.loader?.isLoading)
+
     const dispatch = useDispatch();
     let navigate = useNavigate()
 
@@ -166,9 +170,10 @@ function LoginPage() {
                         </div>
 
                         <div className="submit_btn">
-                            <button type="submit" className="px-4 py-3 w-full rounded-full border font-semibold text-[#ECF9FD] text-base bg-[#2D419F] bg-gradient-to-tl from-[#7209B7] from-15.6% to-[#4361EE] to-84.4% transition-all hover:bg-gradient-to-tr">
+                            <GradientButton type='submit' disabled={isLoading} className='w-full flex items-center text-center justify-center gap-4 font-semibold'>
+                                <SpinLoader isLoading={isLoading} />
                                 Log in
-                            </button>
+                            </GradientButton>
                         </div>
                     </div>
                     <SocialButton type='login' />

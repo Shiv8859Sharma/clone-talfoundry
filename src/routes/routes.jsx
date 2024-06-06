@@ -1,11 +1,16 @@
 import { lazy } from "react";
+
+// public pages
 import Home from "@/pages/Home";
-const SearchFreelancer = lazy(() => import('@/pages/public/searchFreelancer'))
-const FindWork = lazy(() => import('@/pages/public/findWork'))
-const AwsAdvisory = lazy(() => import('@/pages/public/services/awsAdvisory'))
-const SalesforceAdvisory = lazy(() => import('@/pages/public/services/salesforceAdvisory'))
-const HowItWorks = lazy(() => import('@/pages/public/howItWorks'))
-const HelpCenter = lazy(() => import('@/pages/public/helpCenter'))
+const SearchFreelancer = lazy(() => import('@/pages/public/searchFreelancer'));
+const FindWork = lazy(() => import('@/pages/public/findWork'));
+const AwsAdvisory = lazy(() => import('@/pages/public/services/awsAdvisory'));
+const SalesforceAdvisory = lazy(() => import('@/pages/public/services/salesforceAdvisory'));
+const HowItWorks = lazy(() => import('@/pages/public/howItWorks'));
+const HelpCenter = lazy(() => import('@/pages/public/helpCenter'));
+
+// project manager Pages
+const ProjectManagerDashboard = lazy(() => import('@/pages/projectManager/home'));
 
 export const PublicRoutes = {
     children: [
@@ -58,7 +63,7 @@ export const CloudExpertRoutes = {
 
 export const ProjectManagerRoutes = {
     children: [
-        { path: "/", element: <p>Pm Dashboard</p> },
+        { path: "/", element: <ProjectManagerDashboard /> },
         { path: "/find-freelancers/:tab", element: <p>Find Freelancer</p> },
         { path: "/analytics", element: <p>Analytics</p> },
         { path: "/post-a-job", element: <p>Post a job</p> },

@@ -3,8 +3,12 @@ import { getCurrentLocation } from "@/utills/currentLocation";
 import { useEffect, useState } from 'react';
 import countryList from '@/utills/countryStateCity';
 import { InputField, AutocompleteField, CheckboxField } from '@/components/formFields';
+import { GradientButton } from "../../components/buttons";
+import { SpinLoader } from "../../components/loader";
+import { useSelector } from "react-redux";
 
 const SignUpForm = () => {
+    const isLoading = useSelector(state => state?.loader?.isLoading)
     const [showPassword, setShowPassword] = useState()
     const [currentLocation, setCurrentLocation] = useState('')
 
@@ -93,9 +97,10 @@ const SignUpForm = () => {
             </div>
 
             <div className="submit_btn">
-                <button type="submit" className="px-4 py-3 w-full rounded-full border font-semibold text-[#ECF9FD] text-base bg-[#2D419F] bg-gradient-to-tl from-[#7209B7] from-15.6% to-[#4361EE] to-84.4% transition-all hover:bg-gradient-to-tr">
+                <GradientButton type='submit' disabled={isLoading} className='w-full flex items-center text-center justify-center gap-4 font-semibold'>
+                    <SpinLoader isLoading={isLoading} />
                     Sign up
-                </button>
+                </GradientButton>
             </div>
         </div>
     )

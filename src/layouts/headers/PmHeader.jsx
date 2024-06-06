@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, memo, useState } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, ChevronDownIcon, Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,7 @@ const NavigationItem = ({ id, url, children, className }) => {
 // Main ProjectManagerHeader component
 const ProjectManagerHeader = () => {
     const [open, setOpen] = useState(false);
-
+    console.log("this is ruuuuuuu");
     const dropDownLinks = [
         {
             label: 'Hire', icon: <SvgIcon name='user-left-dot-circle' />,
@@ -176,11 +176,11 @@ const ProjectManagerHeader = () => {
                                 </div>
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6" onClick={handleHideMobileTab}>
                                     <div className="job w-full flex justify-center items-center">
-                                        <GradientButton>
-                                            <NavigationItem id='post_a_job' url='/post-a-job'>
+                                        <NavigationItem id='post_a_job' url='/post-a-job' className={'w-full'}>
+                                            <GradientButton className='w-full'>
                                                 Post a Job
-                                            </NavigationItem>
-                                        </GradientButton>
+                                            </GradientButton>
+                                        </NavigationItem>
                                     </div>
                                     <div className="icon w-full flex flex-row-reverse lg:flex-row items-center justify-around lg:justify-normal lg:gap-5">
                                         <Menu as="div" className="relative">
@@ -302,11 +302,11 @@ const ProjectManagerHeader = () => {
 
                                 <div className="profile hidden lg:flex items-center gap-6 px-5 lg:px-0">
                                     <div className="job w-full flex justify-center items-center">
-                                        <GradientButton>
-                                            <NavigationItem id='postAJob' url='/post-a-job'>
+                                        <NavigationItem id='postAJob' url='/post-a-job'>
+                                            <GradientButton>
                                                 Post a Job
-                                            </NavigationItem>
-                                        </GradientButton>
+                                            </GradientButton>
+                                        </NavigationItem>
                                     </div>
 
                                     <div className="icon w-full flex flex-row-reverse lg:flex-row items-center justify-around lg:justify-normal lg:gap-5">
@@ -330,7 +330,7 @@ const ProjectManagerHeader = () => {
     );
 };
 
-export default ProjectManagerHeader;
+export default memo(ProjectManagerHeader);
 
 
 const ProfileMenuButton = ({ src = '', dropDownClass = '' }) => {

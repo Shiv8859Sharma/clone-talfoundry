@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, memo, useState } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
@@ -258,4 +258,4 @@ const LandingPageHeader = () => {
     );
 };
 
-export default LandingPageHeader;
+export default memo(LandingPageHeader);
