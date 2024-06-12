@@ -1,4 +1,3 @@
-// src/components/NavigatePage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -17,7 +16,7 @@ const NavigatePage = ({ id = '', url = '', children, className = '', type = 'nav
 
 
     return (
-        <div onClick={handleClick} id={id} data-url={url} className={className} >
+        <div onClick={handleClick} id={id} data-url={url} className={`cursor-pointer ${className}`} >
             {children}
         </div>
     );

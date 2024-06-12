@@ -1,35 +1,14 @@
 import React, { Fragment, memo, useState } from 'react';
-import { Dialog, DialogPanel, Menu, Transition, TransitionChild } from '@headlessui/react';
-import { Bars3Icon, ChevronDownIcon, Cog6ToothIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Dialog, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, Transition, TransitionChild } from '@headlessui/react';
+import { ChevronDownIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 import SvgIcon from "@/assets/svg";
 import { GradientButton } from '@/components/buttons';
 import Image from '@/components/ImageElement';
 import { logOutUser } from '@/globalStates/actions/authAction';
 import MenuDropDown from '@/components/dropDown';
 import NotificationDropDown from '@/components/notificationDropDown';
-import HamburgerButton from '../../components/buttons/hamburgerButton';
-
-// Helper component to handle navigation and dialog
-const NavigationItem = ({ id, url, children, className }) => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    const handleClick = () => {
-        if (id === 'logout') {
-            dispatch(logOutUser())
-        } else if (url) {
-            navigate(url);
-        }
-    };
-
-    return (
-        <div id={id} data-url={url} className={`cursor-pointer ${className}`} onClick={handleClick}>
-            {children}
-        </div>
-    );
-};
+import HamburgerButton from '@/components/buttons/hamburgerButton';
+import NavigatePage from '@/components/navigatePage';
 
 // Main ProjectManagerHeader component
 const ProjectManagerHeader = () => {
@@ -96,25 +75,25 @@ const ProjectManagerHeader = () => {
 
                                 {/* Mobile Navigation Links */}
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6" onClick={handleHideMobileTab}>
-                                    <NavigationItem id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='search-dot' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Search
                                             </span>
                                         </div>
-                                    </NavigationItem>
-                                    <NavigationItem id='analytics' url='/analytics' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    </NavigatePage>
+                                    <NavigatePage id='analytics' url='/analytics' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='analytics-graph' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Analytics
                                             </span>
                                         </div>
-                                    </NavigationItem>
+                                    </NavigatePage>
                                     {dropDownLinks.map((link) => (
                                         <Menu as="div" className="relative" key={link.label}>
-                                            <Menu.Button className="flex gap-2 items-center">
+                                            <MenuButton className="flex gap-2 items-center">
                                                 <div className='flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4'>
                                                     <div>{link.icon}</div>
                                                     <div className="text-center">
@@ -123,7 +102,7 @@ const ProjectManagerHeader = () => {
                                                         </span>
                                                     </div>
                                                 </div>
-                                            </Menu.Button>
+                                            </MenuButton>
                                             <Transition
                                                 as={React.Fragment}
                                                 enter="transition ease-out duration-100"
@@ -133,43 +112,43 @@ const ProjectManagerHeader = () => {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                <Menu.Items className="absolute left-0 mt-2 z-10 w-56 origin-top-right bg-gray-800 divide-y divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                <MenuItems className="absolute left-0 mt-2 z-10 w-56 origin-top-right bg-gray-800 divide-y divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <div className="py-1">
                                                         {
                                                             link.dropDownList.map((list) => {
                                                                 return (
-                                                                    <Menu.Item key={list.label} as='div'
+                                                                    <MenuItem key={list.label} as='div'
                                                                         className={`px-8 py-3 text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
                                                                     >
-                                                                        <NavigationItem id={list.label.split(' ').join('_').toLowerCase()} url={list.href}>
+                                                                        <NavigatePage id={list.label.split(' ').join('_').toLowerCase()} url={list.href}>
                                                                             {list.label}
-                                                                        </NavigationItem>
-                                                                    </Menu.Item>
+                                                                        </NavigatePage>
+                                                                    </MenuItem>
                                                                 )
                                                             })
                                                         }
 
                                                     </div>
-                                                </Menu.Items>
+                                                </MenuItems>
                                             </Transition>
                                         </Menu>
                                     ))}
-                                    <NavigationItem id='payments' url='/transactions' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='payments' url='/transactions' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='wallet-payment' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Payments
                                             </span>
                                         </div>
-                                    </NavigationItem>
+                                    </NavigatePage>
                                 </div>
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6" onClick={handleHideMobileTab}>
                                     <div className="job w-full flex justify-center items-center">
-                                        <NavigationItem id='post_a_job' url='/post-a-job' className={'w-full'}>
+                                        <NavigatePage id='post_a_job' url='/post-a-job' className={'w-full'}>
                                             <GradientButton className='w-full'>
                                                 Post a Job
                                             </GradientButton>
-                                        </NavigationItem>
+                                        </NavigatePage>
                                     </div>
                                     <div className="icon w-full flex flex-row-reverse lg:flex-row items-center justify-around lg:justify-normal lg:gap-5">
                                         <Menu as="div" className="relative">
@@ -192,44 +171,44 @@ const ProjectManagerHeader = () => {
             <header className="bg-[#17181C] py-2  w-full fixed top-0 left-0 right-0">
                 <nav aria-label="Top" className="mx-auto max-w-[95rem] px-4 sm:px-6 lg:px-8">
                     <div className="">
-                        <div className="flex h-16 items-center justify-center justify-between">
+                        <div className="flex h-16 items-center justify-between gap-3">
                             {/* Logo */}
                             <div className=" lg:ml-0">
-                                <NavigationItem id='home' url='/' className={'cursor-pointer'}>
+                                <NavigatePage id='home' url='/' className={'cursor-pointer'}>
                                     <div className="flex items-center gap-[6px] hover:opacity-100">
                                         <span className="sr-only">Your Company</span>
                                         <SvgIcon name='logo' folderName='commonAssets' outSide='..' className="w-7 h-5" />
                                         <span className="font-bold text-2xl lg:text-3xl text-[#ffffff] hover:text-[#ffffff]">Talfoundry</span>
                                     </div>
-                                </NavigationItem>
+                                </NavigatePage>
                             </div>
 
                             {/* Mobile menu button */}
-                            <HamburgerButton isOpen={open} containerClass='w-12 h-16' setToggelMenu={setOpen} bar1class='w-[70%] bg-white h-1 rounded-md' bar2class='w-full bg-white h-1 rounded-md' bar3class='w-[70%] bg-white h-1 rounded-md-'/>
+                            <HamburgerButton isOpen={open} containerClass='w-12 h-16' setToggelMenu={setOpen} bar1class='w-[70%] bg-white h-1 rounded-md' bar2class='w-full bg-white h-1 rounded-md' bar3class='w-[70%] bg-white h-1 rounded-md-' />
 
 
                             {/* Desktop Navigation Links */}
                             <div className="ml-auto hidden lg:flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end gap-2">
-                                    <NavigationItem id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='search-dot' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Search
                                             </span>
                                         </div>
-                                    </NavigationItem>
-                                    <NavigationItem id='analytics' url='analytics' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    </NavigatePage>
+                                    <NavigatePage id='analytics' url='analytics' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='analytics-graph' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Analytics
                                             </span>
                                         </div>
-                                    </NavigationItem>
+                                    </NavigatePage>
                                     {dropDownLinks.map((link) => (
                                         <Menu as="div" className="relative" key={link.label}>
-                                            <Menu.Button className="flex gap-2 items-center">
+                                            <MenuButton className="flex gap-2 items-center">
                                                 <div className='flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4'>
                                                     <div>{link.icon}</div>
                                                     <div className="text-center">
@@ -238,7 +217,7 @@ const ProjectManagerHeader = () => {
                                                         </span>
                                                     </div>
                                                 </div>
-                                            </Menu.Button>
+                                            </MenuButton>
                                             <Transition
                                                 as={React.Fragment}
                                                 enter="transition ease-out duration-100"
@@ -248,35 +227,35 @@ const ProjectManagerHeader = () => {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                <Menu.Items className="absolute left-0 mt-2 z-10 w-56 origin-top-right bg-gray-800 divide-y divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                <MenuItems className="absolute left-0 mt-2 z-10 w-56 origin-top-right bg-gray-800 divide-y divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <div className="py-1">
                                                         {
                                                             link.dropDownList.map((list) => {
                                                                 return (
-                                                                    <Menu.Item key={list.label} as='div'
+                                                                    <MenuItem key={list.label} as='div'
                                                                         className={`px-8 py-3 text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
                                                                     >
-                                                                        <NavigationItem id={list.label} url={list.href}>
+                                                                        <NavigatePage id={list.label} url={list.href}>
                                                                             {list.label}
-                                                                        </NavigationItem>
-                                                                    </Menu.Item>
+                                                                        </NavigatePage>
+                                                                    </MenuItem>
                                                                 )
                                                             })
                                                         }
 
                                                     </div>
-                                                </Menu.Items>
+                                                </MenuItems>
                                             </Transition>
                                         </Menu>
                                     ))}
-                                    <NavigationItem id='payments' url='/transactions' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='payments' url='/transactions' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='wallet-payment' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
                                                 Payments
                                             </span>
                                         </div>
-                                    </NavigationItem>
+                                    </NavigatePage>
                                 </div>
                             </div>
 
@@ -284,18 +263,18 @@ const ProjectManagerHeader = () => {
 
                                 <div className="profile hidden lg:flex items-center gap-6 px-5 lg:px-0">
                                     <div className="job w-full flex justify-center items-center">
-                                        <NavigationItem id='postAJob' url='/post-a-job'>
+                                        <NavigatePage id='postAJob' url='/post-a-job'>
                                             <GradientButton>
                                                 Post a Job
                                             </GradientButton>
-                                        </NavigationItem>
+                                        </NavigatePage>
                                     </div>
 
                                     <div className="icon w-full flex flex-row-reverse lg:flex-row items-center justify-around lg:justify-normal lg:gap-5">
                                         <Menu as="div" className="relative">
-                                            <Menu.Button className="transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 p-2 rounded-full">
+                                            <MenuButton className="transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 p-2 rounded-full">
                                                 <Cog6ToothIcon className="w-6 h-6 text-white" />
-                                            </Menu.Button>
+                                            </MenuButton>
                                         </Menu>
 
                                         <NotificationDropDown />
@@ -323,7 +302,7 @@ const ProfileMenuButton = ({ src = '', dropDownClass = '' }) => {
 
     return <MenuDropDown
         menuButtonTitle={menuTitle}
-        menuItems={[{ label: <NavigationItem id='profile' url='/settings'>Profile</NavigationItem> }, { label: <NavigationItem id='logout' url='/'>Logout</NavigationItem> }]}
+        menuItems={[{ label: <NavigatePage id='profile' url='/settings'>Profile</NavigatePage> }, { label: <NavigatePage id='logout' url='/' type='dispachAction' dispatchFun={logOutUser()}>Logout</NavigatePage> }]}
         menuItemsClass={`bg-gray-800 divide-y divide-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 ${dropDownClass}`}
         itemClass='text-[#FFFFFF] hover:bg-[#4361EE]'
     />

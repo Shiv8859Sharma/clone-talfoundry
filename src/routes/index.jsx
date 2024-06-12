@@ -8,12 +8,13 @@ import { ErrorBoundary } from '@/constants/ErrorBoundary'
 import { AdminRoutes, CloudExpertRoutes, ProjectManagerRoutes, PublicRoutes } from './routes';
 
 function getRoutes(type) {
+    console.log("type ::", type);
     switch (type) {
         case 'Project Manager':
             return { ...ProjectManagerRoutes };
         case 'Freelancer':
             return { ...CloudExpertRoutes };
-        case 'admin':
+        case 'Admin':
             return { ...AdminRoutes };
         default:
             return { ...PublicRoutes };

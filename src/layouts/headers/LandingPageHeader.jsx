@@ -3,8 +3,8 @@ import { Dialog, DialogPanel, Popover, PopoverPanel, Transition, TransitionChild
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { popupOpen } from '@/globalStates/actions/PopupAction';
 import SvgIcon from "@/assets/svg";
-import HamburgerButton from '../../components/buttons/hamburgerButton';
-import NavigatePage from '../../components/navigatePage';
+import HamburgerButton from '@/components/buttons/hamburgerButton';
+import NavigatePage from '@/components/navigatePage';
 
 // Main LandingPageHeader component
 const LandingPageHeader = () => {
@@ -203,7 +203,7 @@ const LandingPageHeader = () => {
                             {/* Desktop Login and Sign Up */}
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    <NavigatePage id='login' dispatchFun={openPopup('signUp')} type='dispachAction' className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                                    <NavigatePage id='login' dispatchFun={openPopup('login')} type='dispachAction' className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         <div className="text-[#17181C] text-base cursor-pointer px-3 py-2 rounded-full transition-all duration-200 ease-linear lg:hover:bg-[#D9DFFC]">Login</div>
                                     </NavigatePage>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />

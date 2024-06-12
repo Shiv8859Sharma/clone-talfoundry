@@ -19,7 +19,7 @@ const Header = () => {
             <ProjectManagerHeader />
             : role === 'Freelancer' ?
                 <FreelancerHeader />
-                : role === 'admin' ?
+                : role === 'Admin' ?
                     <AdminHeader />
                     : <LandingPageHeader />
     )
