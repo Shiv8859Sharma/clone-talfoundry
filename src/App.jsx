@@ -10,9 +10,8 @@ function App() {
   let userType = useMemo(() => {
     return userRole || ''
   }, [userRole])
-
   return (
-    <div className="bg-[#FDFBFE] font-figtree">
+    <div className="bg-[#FDFBFE] font-figtree relative">
       <RouterProvider router={router(userType)} />
     </div>
   );

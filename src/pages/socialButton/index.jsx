@@ -1,4 +1,5 @@
 import SvgIcon from "@/assets/svg"
+import { memo } from "react"
 
 const SocialButton = (props) => {
     let { type } = props
@@ -19,4 +20,4 @@ const SocialButton = (props) => {
     )
 }
 
-export default SocialButton
+export default memo(SocialButton);

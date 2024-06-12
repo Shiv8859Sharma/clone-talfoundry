@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,8 +13,8 @@ import { setFormFieldErrors } from '@/globalStates/actions/formAction';
 import { setAuthToken, loginUser } from '@/globalStates/actions/authAction';
 import { popupClose, popupOpen } from '@/globalStates/actions/PopupAction';
 import { InputField, CheckboxField } from '@/components/formFields';
-import { SpinLoader } from '../../components/loader';
-import { GradientButton } from '../../components/buttons';
+import { SpinLoader } from '@/components/loader';
+import { GradientButton } from '@/components/buttons';
 
 function LoginPage() {
     const formDetails = useSelector(state => state?.FormDetails)
@@ -118,7 +118,7 @@ function LoginPage() {
                     </div>
                 </div>
 
-                <form className="px-4 sm:px-6 md:px-8 flex flex-col gap-5" name="login_form" id="login_id" onSubmit={handleLogin}>
+                <form className="px-4 sm:px-6 md:px-8 flex flex-col gap-5" name="login_form" autoComplete="off" id="login_id" onSubmit={handleLogin}>
 
                     {error && <div className='bg-red-100 py-3 px-2 w-full rounded-md border-2 border-rose-600 text-red-700'>
                         <span>{error}</span>
@@ -152,7 +152,7 @@ function LoginPage() {
                             </div>
                         </div>
 
-                        <div className="recaptcha-container flex flex-col items-center py-2">
+                        <div className="recaptcha-container relative flex flex-col items-center py-2">
                             <div>
                                 <ReCAPTCHA
                                     sitekey="6LfwYeQZAAAAAKZQ2zp7wA8o24Wu_3-oa2zQf0PM"
@@ -183,4 +183,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default memo(LoginPage);

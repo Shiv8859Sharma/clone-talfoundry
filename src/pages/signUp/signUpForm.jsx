@@ -3,8 +3,8 @@ import { getCurrentLocation } from "@/utills/currentLocation";
 import { useEffect, useState } from 'react';
 import countryList from '@/utills/countryStateCity';
 import { InputField, AutocompleteField, CheckboxField } from '@/components/formFields';
-import { GradientButton } from "../../components/buttons";
-import { SpinLoader } from "../../components/loader";
+import { GradientButton } from "@/components/buttons";
+import { SpinLoader } from "@/components/loader";
 import { useSelector } from "react-redux";
 
 const SignUpForm = () => {

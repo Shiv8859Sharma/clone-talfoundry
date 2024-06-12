@@ -1,7 +1,7 @@
 const FindExpertLoader = ({ count }) => {
     return (
-        [...Array(count)].map((item) => {
-            return <li key={`Find_Expert_Loader_${item}`} className="py-8 px-6 animate-pulse border border-[#F1E7F8] rounded-[16px] bg-[#FFFFFF] flex flex-col items-center gap-6">
+        [...Array(count)].map((item, index) => {
+            return <li key={`Find_Expert_Loader_${item}-${index}`} className="py-8 px-6 animate-pulse border border-[#F1E7F8] rounded-[16px] bg-[#FFFFFF] flex flex-col items-center gap-6">
                 <div className="expert_img relative w-20 h-20">
                     <div className="exp_img">
                         <div className="skeleton-loader bg-gray-200 rounded-full w-20 h-20"></div>

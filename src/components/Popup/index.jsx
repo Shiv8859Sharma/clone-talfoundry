@@ -27,7 +27,7 @@ function PopupComponent() {
 
     return (
         <Transition show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={ClosePopup}>
+            <Dialog as="div" className="relative z-[9999]" onClose={ClosePopup}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"

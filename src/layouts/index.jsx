@@ -27,7 +27,9 @@ const layout = () => {
       <PopupComponent />
       <Headers />
       <Suspense fallback={InitialLoader()}>
-        <Outlet />
+        <div className="pt-[4.1rem]">
+          <Outlet />
+        </div>
       </Suspense>
       <Footer />
     </>

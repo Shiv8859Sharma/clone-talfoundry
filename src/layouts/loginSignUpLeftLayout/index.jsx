@@ -6,6 +6,7 @@ import image3 from '@/assets/commonAssets/onBoarding/image3.svg'
 import { useEffect, useState } from 'react';
 import Image from "@/components/ImageElement"
 import SvgIcon from "@/assets/svg"
+import { memo } from 'react';
 
 let images = [image1, image2, image3]
 const LoginSignUpLeftLayout = () => {
@@ -53,4 +54,4 @@ const LoginSignUpLeftLayout = () => {
     )
 }
 
-export default LoginSignUpLeftLayout
+export default memo(LoginSignUpLeftLayout);

@@ -1,12 +1,12 @@
 import { Transition } from '@headlessui/react';
 import Image from '../ImageElement'
-import { ChatBubbleBottomCenterIcon, ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline';
-import SvgIcon from '../../assets/svg';
-import { memo } from 'react';
+import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline';
+import SvgIcon from '@/assets/svg';
 import { useSelector } from 'react-redux';
+import { memo } from 'react';
 const UserProfileCard = () => {
-  const userDetails = useSelector(state => state?.userDetails)
-  console.log(userDetails?.full_name);
+  const userDetails = useSelector(state => state?.userDetails);
+
   return (
     <Transition
       show={true}

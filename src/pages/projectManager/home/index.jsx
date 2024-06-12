@@ -1,9 +1,9 @@
-import { memo } from "react"
+import { memo } from "react";
 import HeroSection from "./heroSection"
 
 const ProjectManagerDashboard = () => {
     return (
-        <main class="">
+        <main>
             <HeroSection />
         </main>
     )

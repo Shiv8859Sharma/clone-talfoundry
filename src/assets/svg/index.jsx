@@ -1,4 +1,5 @@
 import React from 'react';
+import { memo } from 'react';
 
 export const ImportIcon = (name, folderName, outSide) => {
   if(outSide){
@@ -16,10 +17,10 @@ const Icon = ({ folderName, name, outSide, ...rest }) => {
   }
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<span>Loading...</span>}>
       <IconComponent {...rest} />
     </React.Suspense>
   );
 };
 
-export default Icon;
+export default memo(Icon);

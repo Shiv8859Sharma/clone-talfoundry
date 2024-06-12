@@ -3,7 +3,7 @@ import { fielError } from "@/utills/fieldError"
 import { Transition } from "@headlessui/react"
 
 const InputField = (props) => {
-    let { label = '', labelClass = '', type = 'text', name = '', value = '', placeholder = '', onChange = () => { }, onBlur = () => { }, containerClass = '', inputClass = '', labelIcon = '', errorMessages = [], rightIcon = '', rightIconClass = '', leftIcon = '', leftIconClass = '', required = false, errorElement = 'span', errorMessageClassName = '', inputContainerClass='' } = props
+    let { label = '', labelClass = '', type = 'text', name = '', value = '', placeholder = '', onChange = () => { }, onBlur = () => { }, containerClass = '', inputClass = '', labelIcon = '', errorMessages = [], rightIcon = '', rightIconClass = '', leftIcon = '', leftIconClass = '', required = false, errorElement = 'span', errorMessageClassName = '', inputContainerClass='', autoComplete='off' } = props
     const formDetails = useSelector(state => state?.FormDetails)
     let message = fielError(name, formDetails?.errors)
     return (
@@ -20,7 +20,8 @@ const InputField = (props) => {
                     }
                     <input className={`w-full outline-none bg-transparent ${inputClass}`} type={type} name={name} id={`${name}Id`} placeholder={placeholder}
                         required={required}
-                        autoComplete={type === 'password' ? 'new-password' : 'off'}
+                        autoComplete={type === 'password' ? 'new-password' : autoComplete}
+                        aria-autocomplete='none'
                     />
                     {
                         rightIcon && (
