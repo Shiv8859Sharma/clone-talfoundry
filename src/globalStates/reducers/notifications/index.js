@@ -15,7 +15,6 @@ export function notifications(state = { unread_notification: [], all_notificatio
         case `${REMOVE_NOTIFICATION}`:
             let stateName = action.payload.stateName
             let uuid = action.payload.uuid
-            console.log("uuid ::" , uuid , state?.[stateName]);
             return {
                 ...state,
                 [stateName]: state?.[stateName]?.filter(notifi => notifi?.uuid !== uuid)

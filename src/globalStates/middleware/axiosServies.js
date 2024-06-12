@@ -155,7 +155,6 @@ const AxiosService = ({ getState }) => next => async action => {
                     })
                     errorResponse = { response: axiosError?.response, message: axiosError?.message }
                     if ([400, 401, 500].includes(axiosError?.status || axiosError?.response?.status)) {
-                        // console.log(axiosError.status, axiosError.response);
                         errorResponse = { response: axiosError?.response, message: axiosError?.message }
                     }
 

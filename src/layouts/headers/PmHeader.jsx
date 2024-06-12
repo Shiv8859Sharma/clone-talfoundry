@@ -35,7 +35,6 @@ const ProjectManagerHeader = () => {
     const handleHideMobileTab = (event) => {
         const clickedElement = event.target;
         let targetedID = clickedElement.closest('[id]')?.getAttribute('id')
-        console.log("elementID :::", targetedID);
         let id = ["findExperts", 'analytics', 'my_jobs', 'post_a_job', 'cloud_expert', 'my_cloud_experts', ' my_proposals', 'all_contracts', 'payments', 'notifications']
         if (id.includes(targetedID) && open) {
             setOpen(false)

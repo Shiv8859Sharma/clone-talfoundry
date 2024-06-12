@@ -122,7 +122,6 @@ let services_section = [
     }
 ]
 function AwsAdvisory() {
-    console.log("this is  AwsAdvisory");
     return (
         <main>
             <AdvisoryHeroSection

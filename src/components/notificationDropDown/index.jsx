@@ -22,7 +22,6 @@ const NotificationDropDown = () => {
         let uuid = buttonElement.dataset.uuid
         let activity = buttonElement.dataset.activity
         let notifier_uuid = buttonElement.dataset.notifier_uuid
-        console.log(e.target?.dataset);
         if (uuid && activity && notifier_uuid) {
             dispatch(updateNotification(uuid))
                 .then(response => {

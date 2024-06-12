@@ -13,7 +13,6 @@ const LandingPageHeader = () => {
     const handleHideMobileTab = (event) => {
         const clickedElement = event.target;
         let targetedID = clickedElement.closest('[id]')?.getAttribute('id')
-        console.log("elementID :::", targetedID);
         let id = ["findExperts", 'findWork', 'awsAdvisory', 'salesforceAdvisory', 'howItWorks', 'helpCenter', 'login', 'signUp', 'payments', 'notifications']
         if (id.includes(targetedID) && open) {
             setOpen(false)
