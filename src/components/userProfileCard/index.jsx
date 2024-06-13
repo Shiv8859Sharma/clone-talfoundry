@@ -1,11 +1,17 @@
 import { Transition } from '@headlessui/react';
 import Image from '../ImageElement'
-import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline';
 import SvgIcon from '@/assets/svg';
 import { useSelector } from 'react-redux';
 import { memo } from 'react';
-const UserProfileCard = () => {
+import NavigatePage from '../navigatePage';
+const UserProfileCard = ({ userActivitySummary }) => {
   const userDetails = useSelector(state => state?.userDetails);
+
+  function formatNumbers(number, length) {
+    return  String(number).padStart(length, '0');
+  }
+
+  const maxLength = Math.max(...userActivitySummary.map(userAce => String(userAce.count).length));
 
   return (
     <Transition
@@ -37,48 +43,29 @@ const UserProfileCard = () => {
       <div className="divider border border-[#F1E7F8]"></div>
 
       <div className="detail flex flex-col gap-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-[14px]">
-            <div className="icon bg-[#4361EE] flex justify-center items-center rounded p-1">
-              {/* <img src="./assets/homepage/signpost.svg" alt="signpost" /> */}
-              <SvgIcon name='signPost' />
-            </div>
-            <div>
-              <span className="font-figtree text-base font-bold">Job Posted</span>
-            </div>
-          </div>
-          <div className="num">
-            <span className="font-figtree text-base font-bold text-[#4361EE]">29</span>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-[14px]">
-            <div className="icon bg-[#4361EE] flex justify-center items-center rounded p-1">
-              <SvgIcon name='proposalsDocument' />
-            </div>
-            <div>
-              <span className="font-figtree text-base font-bold">Proposals</span>
-            </div>
-          </div>
-          <div className="num">
-            <span className="font-figtree text-base font-bold text-[#4361EE]">12</span>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-[14px]">
-            <div className="icon bg-[#4361EE] flex justify-center items-center rounded p-1">
-              <ChatBubbleBottomCenterTextIcon className='w-5 h-5' color='white' />
-            </div>
-            <div>
-              <span className="font-figtree text-base font-bold">Invitations</span>
-            </div>
-          </div>
-          <div className="num">
-            <span className="font-figtree text-base font-bold text-[#4361EE]">08</span>
-          </div>
-        </div>
+        {
+          userActivitySummary.map((summary, index) => {
+            return (
+              <NavigatePage key={`userActivitySummary_${index}`} url={summary?.url} className="flex justify-between items-center" id={(summary?.label || '').toLowerCase().split(' ').join('_')}>
+                <div className="flex items-center gap-[14px]">
+                  <div className="icon bg-[#4361EE] flex justify-center items-center rounded p-1">
+                    {
+                      summary?.svgIcon ?
+                        <SvgIcon name={summary?.svgIcon} />
+                        : summary?.icon
+                    }
+                  </div>
+                  <div>
+                    <span className="font-figtree text-base font-bold">{summary?.label}</span>
+                  </div>
+                </div>
+                <div className="num">
+                  <span className="font-figtree text-base font-bold text-[#4361EE]">{formatNumbers(summary?.count, maxLength)}</span>
+                </div>
+              </NavigatePage>
+            )
+          })
+        }
       </div>
     </Transition>
   );

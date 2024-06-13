@@ -17,3 +17,9 @@
 .button-linear-active {
     background: linear-gradient(128deg, rgba(113, 67, 215, 1) 0%, rgba(44, 87, 243, 1) 35%, rgba(78, 212, 247, 1) 100%);
 }
+
+.text-gradient {
+    background: linear-gradient(90deg, #4361ee, #7209b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

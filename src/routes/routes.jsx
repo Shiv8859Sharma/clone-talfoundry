@@ -2,6 +2,7 @@ import { lazy } from "react";
 
 // public pages
 import Home from "@/pages/Home";
+import FindFreelancer from "../pages/projectManager/findFreelancers";
 const SearchFreelancer = lazy(() => import('@/pages/public/searchFreelancer'));
 const FindWork = lazy(() => import('@/pages/public/findWork'));
 const AwsAdvisory = lazy(() => import('@/pages/public/services/awsAdvisory'));
@@ -64,7 +65,7 @@ export const CloudExpertRoutes = {
 export const ProjectManagerRoutes = {
     children: [
         { path: "/", element: <ProjectManagerDashboard /> },
-        { path: "/find-freelancers/:tab", element: <p>Find Freelancer</p> },
+        { path: "/find-freelancers/:tab", element: <FindFreelancer /> },
         { path: "/analytics", element: <p>Analytics</p> },
         { path: "/post-a-job", element: <p>Post a job</p> },
         { path: "/my-jobs", element: <p>My jobs</p> },

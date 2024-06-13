@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux'
-import { popupClose } from '../../globalStates/actions/PopupAction'
+import { popupClose } from '@/globalStates/actions/PopupAction'
 import *  as Pages from './popupComponents'
 
 function PopupComponent() {
@@ -20,6 +20,9 @@ function PopupComponent() {
                 return <Pages.SignUpPage />
             case 'FORGET_PASSWORD':
                 return <Pages.ForgetPassword />
+            case 'SEE_ALL_SKILLS':
+            case 'SEE_ALL_ROLES':
+                return <Pages.SeeAllSkills />
             default:
                 break;
         }

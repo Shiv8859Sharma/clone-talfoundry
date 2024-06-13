@@ -8,7 +8,7 @@ const InputField = (props) => {
     let message = fielError(name, formDetails?.errors)
     return (
         <div className={`${name} w-full flex flex-col gap-2.5 ${containerClass}`}>
-            <div className="input-container">
+            <div className="input-container flex flex-col gap-2">
                 <label className={`text-[#17181C] font-bold ${labelClass}`} htmlFor={`${name}Id`}>{label}</label>
                 <div className={`${name}_field px-4 py-3 border border-[#BBBDC8] rounded-full flex ${inputContainerClass}`}>
                     {
