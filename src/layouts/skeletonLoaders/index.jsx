@@ -1,10 +1,12 @@
 import React from "react";
 import FindExpertLoader from "./findExpertLoader";
 import FindWorkLoader from "./findWorkLoader";
+import UserDeatilsCardLoader from "./userDeatilsCardLoader";
 
 const componentMap = {
     FindExpertLoader: FindExpertLoader,
-    FindWorkLoader: FindWorkLoader
+    FindWorkLoader: FindWorkLoader,
+    UserDeatilsCardLoader: UserDeatilsCardLoader
 };
 
 const CustomLoader = ({ count, name }) => {

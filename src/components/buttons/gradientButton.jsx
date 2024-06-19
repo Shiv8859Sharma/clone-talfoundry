@@ -2,7 +2,7 @@ const GradientButton = (props) => {
     let { className, onClick = () => { }, children, text, id = '', type = 'button', ...rest } = props
     return (
         <button onClick={onClick}
-            className={`py-2.5 px-6 rounded-3xl font-figtree text-base text-[#FFFFFF] text-center text-bold bg-gradient-to-r from-[#4361EE] to-[#7209B7] whitespace-nowrap ${className}`}
+            className={`px-6 py-3.5 rounded-full font-figtree border font-semibold text-[#ECF9FD] text-sm lg:text-base bg-[#2D419F] bg-gradient-to-tl from-[#7209B7] from-15.6% to-[#4361EE] to-84.4% transition-all hover:bg-gradient-to-tr border-none whitespace-nowrap ${className}`}
             id={id}
             type={type}
             {...rest}

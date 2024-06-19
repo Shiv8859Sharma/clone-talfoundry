@@ -2,7 +2,7 @@
 const sign_up_validation_rules = {
     first_name: /^[a-zA-z\s]+$/,
     last_name: /^[a-zA-z\s]+$/,
-    email : '',
+    email: '',
     password: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/,
     location: '',
     confirm_password: '',
@@ -28,13 +28,44 @@ const sign_up_error_message = {
 }
 
 const login_validation_rules = {
-    email : '',
+    email: '',
     password: '',
+}
+
+const SendInvationForm_validation_rules = {
+    job: '',
+    inviteText: '',
+}
+
+const SendInvationForm_error_message = {
+    job: {
+        null_value_message: "Please select a job.",
+    },
+    inviteText: {
+        null_value_message: "This field can't be blank.",
+    }
+}
+
+const HireFreelancerForm_validation_rules = {
+    job: '',
+    rateType: '',
+}
+
+const HireFreelancerForm_error_message = {
+    job: {
+        null_value_message: "Please select a job.",
+    },
+    rateType: {
+        null_value_message: "Please select a job type.",
+    }
 }
 
 export let rules = {
     sign_up_validation_rules,
     sign_up_error_message,
     login_validation_rules,
-    
+    SendInvationForm_validation_rules,
+    SendInvationForm_error_message,
+    HireFreelancerForm_validation_rules,
+    HireFreelancerForm_error_message
 }

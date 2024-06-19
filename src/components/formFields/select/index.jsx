@@ -2,44 +2,81 @@ import { Transition } from "@headlessui/react"
 import { ChevronDownIcon } from "@heroicons/react/24/outline"
 import { fielError } from "@/utills/fieldError"
 import { useSelector } from "react-redux"
+import Select from 'react-select';
+import { useState } from "react";
 
 function isObject(objValue) {
     return objValue && typeof objValue === 'object' && objValue.constructor === Object;
 }
 
+const customStyles = {
+    control: (provided) => ({
+        ...provided,
+        border: 'none', // Remove border
+        boxShadow: 'none', // Remove box shadow
+        padding: '0.45rem 0px',
+        background: 'transparent',
+    }),
+    indicatorsContainer: (provided) => ({
+        ...provided,
+    }),
+    dropdownIndicator: (provided) => ({
+        ...provided,
+        padding: '0px', // Adjust the padding as needed
+    }),
+    indicatorSeparator: () => ({
+        display: 'none'
+    }),
+};
+
+let timeId = ''
 const SelectField = (props) => {
-    let { label = '', name = '', containerClass = '', labelClass = '', inputClass = '', options = [], defaultOption = false, defaultOptionLabel = '', defaultValue = '', errorElement = 'span', errorMessageClassName = '', title = 'name', value = 'value', inputContainerClass='' } = props
+    let { label = '', name = '', containerClass = '', required = false, labelClass = '', inputClass = '', placeholder='', options = [], onChange = () => { }, defaultValue = '', errorElement = 'span', errorMessageClassName = '', title = 'name', value = 'value', inputContainerClass = '', leftIcon = '', leftIconClass = '' } = props
 
     const formDetails = useSelector(state => state?.FormDetails)
     let message = fielError(name, formDetails?.errors)
+    let optionsList = options.map((item) => isObject(item) ? { ...item, label: item?.[title], value: item?.[value] } : { label: item, value: item })
+
+    const [selectedOption, setSelectedOption] = useState(defaultValue);
+
+    const handleSelectChange = option => {
+        setSelectedOption(option);
+        clearTimeout(timeId) 
+        timeId = setTimeout(() => {
+            onChange({ target: { name, type: 'select', value: option } })
+        }, 500)
+    };
 
     return (
-        <div className="w-full flex flex-col gap-2.5">
+        <div className="w-full flex flex-col gap-2.5 z-0">
             <div className="input-container">
-                <div className={`${name} relative flex flex-col gap-2.5 ${containerClass}`}>
-                    <label className={`text-[#17181C] font-bold ${labelClass}`} htmlFor={`${name}Id`}>{label}</label>
-                    <div aria-hidden="true" className={`border px-4 border-[#BBBDC8] rounded-full flex items-center ${inputContainerClass}`} >
-                    <select name={name} className={`appearance-none w-full bg-transparent py-3 outline-none ${inputClass}`} id={`${name}Id`} defaultValue={defaultValue}>
-
-                        {defaultOption && <option value=''>{defaultOptionLabel}</option>}
+                <div className={`${name} flex flex-col gap-2.5 ${containerClass}`}>
+                    <label className={`text-[#17181C] font-bold text-nowrap ${labelClass}`} htmlFor={`${name}Id`}>{label}</label>
+                    <div aria-hidden="true" className={`border px-4 border-[#BBBDC8] rounded-full flex gap-2 items-center min-w-max ${inputContainerClass}`} >
                         {
-                            options.length ? options.map((option, index) => {
-                                return (
-                                    isObject(option) ?
-                                        <option key={index} value={option?.[value]} selected={option?.[value] === defaultValue}>{option?.[title]}</option>
-                                        : <option key={index} value={option}>{option}</option>
-                                )
-                            })
-                                : <p>Options is not available!</p>
+                            leftIcon && (
+                                <div className={`w-[1.5rem] ${leftIconClass}`}>
+                                    {leftIcon}
+                                </div>
+                            )
                         }
-
-                    </select>
-                    {/* <div className="arrow absolute top-[1.5rem] right-[4%]  w-[1.5rem]"> */}
-                        <ChevronDownIcon
-                            className={`h-5 w-5 transition duration-150 ease-in-out`}
-                            aria-hidden="true"
-                        />
-                    {/* </div> */}
+                        <Select
+                            className={`appearance-none w-full bg-transparent outline-none text-wrap outline-none border-none ${inputClass}`}
+                            id={`${name}Id`}
+                            value={selectedOption}
+                            placeholder={placeholder}
+                            onChange={handleSelectChange}
+                            options={optionsList}
+                            styles={customStyles}
+                            required={required}
+                            components={{ DropdownIndicator: () => <ChevronDownIcon className="size-6" aria-hidden="true" /> }}
+                        >
+                        </Select>
+                    </div>
+                    <div className="hidden">
+                        <select name={name} defaultValue={JSON.stringify(selectedOption)}>
+                            <option value={JSON.stringify(selectedOption)}>{selectedOption?.label}</option>
+                        </select>
                     </div>
                 </div>
             </div>

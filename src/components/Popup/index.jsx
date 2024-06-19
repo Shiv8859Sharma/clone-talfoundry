@@ -23,6 +23,12 @@ function PopupComponent() {
             case 'SEE_ALL_SKILLS':
             case 'SEE_ALL_ROLES':
                 return <Pages.SeeAllSkills />
+            case 'Hire_FREELANCER':
+                return <Pages.HireFreelancerForm />
+            case 'SEND_INVITE':
+                return <Pages.SendInviteForm />
+            case 'SUCCESS_POPUP':
+                return <p>Success</p>
             default:
                 break;
         }
@@ -44,7 +50,7 @@ function PopupComponent() {
                     <div className="fixed inset-0 bg-black/30" />
                 </Transition.Child>
 
-                <div className="fixed inset-0 z-[50] w-screen overflow-y-auto">
+                <div className="fixed inset-0 z-[50] w-screen overflow-y-auto m-auto">
                     <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
                         <Transition.Child
                             as={Fragment}

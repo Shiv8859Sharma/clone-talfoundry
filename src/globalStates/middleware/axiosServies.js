@@ -140,7 +140,7 @@ const AxiosService = ({ getState }) => next => async action => {
                 const getErrors = ['Invalid user', "Signature has expired", "Invalid segment encoding", 'Not an authorized user']
                 // 'Network Error',
                 if (axiosError.message === 'Network Error') {
-                    window.location.replace('/network-error')
+                    // window.location.replace('/network-error')
                 }
                 if (getErrors.includes(axiosError?.response?.data?.message) || getErrors.includes(axiosError?.response?.data?.errors) || getErrors.includes(axiosError.message)) {
                     // clearLocalStorage();

@@ -3,11 +3,11 @@ import PopupComponent from "@/components/Popup"
 import Headers from '@/layouts/headers'
 import { Suspense, memo } from "react";
 import Footer from "@/layouts/footer";
-import useNetworkStatus from "@/utills/customHooks";
+// import useNetworkStatus from "@/utills/customHooks";
 import SvgIcon from "@/assets/svg"
 
 const layout = () => {
-  useNetworkStatus();
+  // useNetworkStatus();
   let InitialLoader = () => {
 
     return (

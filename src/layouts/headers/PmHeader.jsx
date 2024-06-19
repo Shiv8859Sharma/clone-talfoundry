@@ -19,13 +19,13 @@ const ProjectManagerHeader = () => {
             dropDownList: [
                 { label: 'Post a job', href: "/post-a-job" },
                 { label: 'My jobs', href: "/my-jobs" },
-                { label: 'Cloud Expert', href: "/find-freelancers/search" }
+                { label: 'Cloud Expert', href: "/freelancers/search" }
             ]
         },
         {
             label: 'Manage', icon: <SvgIcon name='double-user' />,
             dropDownList: [
-                { label: 'My cloud experts', href: "/find-freelancers/hired" },
+                { label: 'My cloud experts', href: "/freelancers/hired" },
                 { label: 'My proposals', href: "/my-proposals" },
                 { label: 'All contracts', href: "/all-contracts" }
             ]
@@ -74,7 +74,7 @@ const ProjectManagerHeader = () => {
 
                                 {/* Mobile Navigation Links */}
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6" onClick={handleHideMobileTab}>
-                                    <NavigatePage id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='findExperts' url='/search-freelancers' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='search-dot' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
@@ -189,7 +189,7 @@ const ProjectManagerHeader = () => {
                             {/* Desktop Navigation Links */}
                             <div className="ml-auto hidden lg:flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end gap-2">
-                                    <NavigatePage id='findExperts' url='/find-freelancers/search' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
+                                    <NavigatePage id='findExperts' url='/search-freelancers' className="flex items-center gap-3 lg:flex-col gap-1 transition-all duration-300 hover:bg-[#FFFFFF1A] opacity-75 hover:opacity-100 px-4">
                                         <div><SvgIcon name='search-dot' /></div>
                                         <div className="text-center">
                                             <span className="font-figtree text-right text-sm text-[#FFFFFF]">
