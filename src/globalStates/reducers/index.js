@@ -5,10 +5,11 @@ import PopupDetails from "./popup";
 import { FormDetails } from "./formDetails";
 import { freelancerUserList, publicFreelancerUserList } from './freelancerUser'
 import loaderReducer from "./loader";
-import { publicJobs } from "./Jobs";
+import { filterCountForJobs, getAllJobs, publicJobs } from "./Jobs";
 import { notifications } from "./notifications";
 import UserActivitySummary from "./userActiveStatus";
 import CommanState from "./commonReducer";
+import { transactions } from "./transactions";
 
 export default combineReducers({
     auth: AuthDetails,
@@ -18,8 +19,11 @@ export default combineReducers({
     publicFreelancerUserList,
     loader: loaderReducer,
     publicJobs,
+    getAllJobs,
     notifications,
     UserActivitySummary,
     freelancerUserList,
     CommanState,
+    filterCountForJobs,
+    transactions
 })

@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import PageHeading from '../../layouts/pageHeading';
-import { SelectField } from '../../components/formFields';
-import { GradientButton, OutlineButton } from '../../components/buttons';
+import React, { useEffect, useState } from 'react';
+import PageHeading from '@/layouts/pageHeading';
+import { SelectField } from '@/components/formFields';
+import { GradientButton, OutlineButton } from '@/components/buttons';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactionsHistory } from '../../globalStates/actions/transactionsAction';
+import { resetReduxState } from '../../globalStates/actions/commanAction';
 
 const Transactions = () => {
     const [showModal, setShowModal] = useState(false);
+    const dispatch = useDispatch()
+    const transactions = useSelector(state => state?.transactions?.transactions)
+    const isLoading = useSelector((state => state.loader?.isLoading))
 
+    // console.log(":::: transactions", transactions);
+
+    useEffect(() => {
+        dispatch(getTransactionsHistory())
+
+        return (() => {
+            dispatch(resetReduxState('transactions'))
+        })
+    }, [])
     const display = () => {
         setShowModal(!showModal);
     };
@@ -48,11 +63,11 @@ const Transactions = () => {
                             </div>
 
                             <div className="flex gap-2 justify-between lg:items-end lg:w-full mb-3">
-                                <doiv>
+                                <div>
                                     <OutlineButton>
                                         Apply
                                     </OutlineButton>
-                                </doiv>
+                                </div>
                                 <div className="">
                                     <GradientButton>
                                         Download Invoices
@@ -69,7 +84,8 @@ const Transactions = () => {
                         <div className=" overflow-x-auto">
                             <table class="w-full">
                                 <thead class="font-figtree font-semibold text-sm leading-[20px] text-justify bg-[#F1F2F4] rounded-lg">
-                                    <tr><th class="pt-3 px-8">DATE</th>
+                                    <tr>
+                                        <th class="pt-3 px-8">DATE</th>
                                         <th>TYPE</th>
                                         <th>CLOUD EXPERT</th>
                                         <th>AMOUNT/BALANCE</th>
@@ -93,6 +109,60 @@ const Transactions = () => {
                                         <td>$200.00 / $70.00</td>
                                         <td>303948273</td>
                                         <td>Credit Card</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$200.00 / $70.00</td>
+                                        <td>303948272</td>
+                                        <td>Escrow</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$70.00 / $0.00</td>
+                                        <td>303948271</td>
+                                        <td>Escrow</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$200.00 / $70.00</td>
+                                        <td>303948272</td>
+                                        <td>Escrow</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$70.00 / $0.00</td>
+                                        <td>303948271</td>
+                                        <td>Escrow</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$200.00 / $70.00</td>
+                                        <td>303948272</td>
+                                        <td>Escrow</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 px-8">Jul 16, 2023</td>
+                                        <td>Payment</td>
+                                        <td>Nick Samson</td>
+                                        <td>$70.00 / $0.00</td>
+                                        <td>303948271</td>
+                                        <td>Escrow</td>
                                     </tr>
 
                                     <tr>

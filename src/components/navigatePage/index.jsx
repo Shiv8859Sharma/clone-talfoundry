@@ -2,13 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-const NavigatePage = ({ id = '', url = '', children, className = '', type = 'navigate', dispatchFun = () => { }, }) => {
+const NavigatePage = ({ id = '', url = '', children, className = '', type = 'navigate', dispatchFun = () => { } }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (type === 'dispachAction') {
-            dispatch(dispatchFun);
+           await dispatch(dispatchFun);
+        }
+        else if(type === 'actionWithNavigation'){
+            await dispatch(dispatchFun)
+            await navigate(url);
+
         } else if (url) {
             navigate(url);
         }

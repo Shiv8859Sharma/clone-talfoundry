@@ -51,7 +51,7 @@ const CloudExperHeader = () => {
     }
 
     return (
-        <div className="bg-[#17181C] w-full relative">
+        <div className="bg-[#17181C] w-full">
             {/* Mobile menu */}
             <Transition show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-40" onClose={setOpen}>
@@ -136,7 +136,7 @@ const CloudExperHeader = () => {
                 </Dialog>
             </Transition>
 
-            <header className="bg-[#17181C] py-3">
+            <header className="bg-[#17181C] py-3 fixed w-full z-50">
                 <nav aria-label="Top" className="mx-auto max-w-[95rem] px-4 sm:px-6 lg:px-8">
                     <div className="">
                         <div className="flex h-16 items-center justify-between gap-3">

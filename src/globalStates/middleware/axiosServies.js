@@ -97,7 +97,7 @@ const getAxiosProps = (apiDetails, token) => {
 const clearLocalStorage = () => localStorage.clear();
 
 const AxiosService = ({ getState }) => next => async action => {
-    const { type = 'GET', data, params, header, method, baseURL, url, URLEndPoint, axiosService, toaster = {} } = action
+    const { type = 'GET', data, params, header, method, baseURL, url, URLEndPoint, axiosService, toaster = {}, withResponseReturnData = {} } = action
     const { loading = TOASTER_OBJECT.loading, success = TOASTER_OBJECT.success, error = TOASTER_OBJECT.error } = toaster
     if (axiosService) {
         const loaderID = randomId();
@@ -121,67 +121,68 @@ const AxiosService = ({ getState }) => next => async action => {
 
             if (success) {
                 if (type === 'LOGOUT') {
-                    await next(removeAuthToken(''))
                     window.location.replace('/')
+                    await next(removeAuthToken(''))
                 }
             } else {
 
             }
             await next({
                 type: `${type}_SUCCESS`,
-                payload: response?.data?.data || response.data
+                payload: Object.keys(withResponseReturnData).length ? { ...withResponseReturnData, data: (response?.data?.data || response.data) } : response?.data?.data || response.data
 
             })
 
-            return response
-        } catch (axiosError) {
-            let errorResponse = ''
-            if (error) {
-                const getErrors = ['Invalid user', "Signature has expired", "Invalid segment encoding", 'Not an authorized user']
-                // 'Network Error',
-                if (axiosError.message === 'Network Error') {
-                    // window.location.replace('/network-error')
-                }
-                if (getErrors.includes(axiosError?.response?.data?.message) || getErrors.includes(axiosError?.response?.data?.errors) || getErrors.includes(axiosError.message)) {
-                    // clearLocalStorage();
-                    next(removeAuthToken(''))
-                    window.location.replace('/')
-                    // window.location.reload()
-                } else {
-                    await next({
-                        type: `${type}_ERROR`,
-                        payload: { response: axiosError?.response, message: axiosError?.message }
-
-                    })
-                    errorResponse = { response: axiosError?.response, message: axiosError?.message }
-                    if ([400, 401, 500].includes(axiosError?.status || axiosError?.response?.status)) {
-                        errorResponse = { response: axiosError?.response, message: axiosError?.message }
-                    }
-
-                    await next({
-                        type: `API_RESPONSE_ERROR`,
-                        payload: { response: axiosError?.response, message: axiosError?.message }
-                    })
-                    errorResponse = { response: axiosError?.response, message: axiosError?.message }
-
-                }
+        return response
+    } catch (axiosError) {
+        let errorResponse = ''
+        if (error) {
+            const getErrors = ['Invalid user', "Signature has expired", "Invalid segment encoding", 'Not an authorized user']
+            // 'Network Error',
+            console.log("axios error message :::", axiosError.message);
+            if (axiosError.message === 'Network Error') {
+                window.location.replace('/network-error')
+            }
+            if (getErrors.includes(axiosError?.response?.data?.message) || getErrors.includes(axiosError?.response?.data?.errors) || getErrors.includes(axiosError.message)) {
+                // clearLocalStorage();
+                window.location.replace('/')
+                next(removeAuthToken(''))
+                // window.location.reload()
             } else {
                 await next({
                     type: `${type}_ERROR`,
-                    payload: { response: axiosError?.response, message: axiosError?.message }
+                    payload: { response: axiosError?.response, message: axiosError?.message, ...withResponseReturnData }
+
                 })
                 errorResponse = { response: axiosError?.response, message: axiosError?.message }
+                if ([400, 401, 500].includes(axiosError?.status || axiosError?.response?.status)) {
+                    errorResponse = { response: axiosError?.response, message: axiosError?.message }
+                }
+
+                await next({
+                    type: `API_RESPONSE_ERROR`,
+                    payload: { response: axiosError?.response, message: axiosError?.message, ...withResponseReturnData }
+                })
+                errorResponse = { response: axiosError?.response, message: axiosError?.message }
+
             }
-            return errorResponse
-        } finally {
-            if (loading) {
-                next(loaderStop({ id: loaderID }))
-            }
+        } else {
+            await next({
+                type: `${type}_ERROR`,
+                payload: { response: axiosError?.response, message: axiosError?.message }
+            })
+            errorResponse = { response: axiosError?.response, message: axiosError?.message }
         }
-    } else {
-        await next(action)
+        return { ...errorResponse, ...withResponseReturnData }
+    } finally {
+        if (loading) {
+            next(loaderStop({ id: loaderID }))
+        }
     }
-    return getState()
+} else {
+    await next(action)
+    }
+return getState()
 }
 
 export default AxiosService

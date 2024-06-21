@@ -11,7 +11,7 @@ const RolesAndSkillsSection = (props) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleTabClick = (data) => {
-        navigate('/search-freelancers', {
+        navigate('/find-work', {
             state: {
                 search: data
             }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { memo } from 'react';
 
 export const ImportIcon = (name, folderName, outSide) => {
@@ -11,13 +11,16 @@ export const ImportIcon = (name, folderName, outSide) => {
   return React.lazy(() => import(`./${name}.svg?react`))
 }
 const Icon = ({ folderName, name, outSide, ...rest }) => {
-  const IconComponent = ImportIcon(name, folderName, outSide);
+  const IconComponent = useMemo(() => {
+    return ImportIcon(name, folderName, outSide);
+  }, [])
+
   if (!IconComponent) {
     return null;
   }
 
   return (
-    <React.Suspense fallback={<span>Loading...</span>}>
+    <React.Suspense fallback={null}>
       <IconComponent {...rest} />
     </React.Suspense>
   );

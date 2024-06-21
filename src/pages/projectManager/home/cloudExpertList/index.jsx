@@ -36,49 +36,47 @@ const ClientList = () => {
                         </div>
                     </div>
                 </div>
-                <div className="cloudExpert grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-                    {
-                        isLoading ? <CustomLoader count={6} name='FindExpertLoader' />
-                            : !isEmpty(cloudExpertList) && isArray(cloudExpertList) ?
-                                <>
-                                    {cloudExpertList.slice(0, 6).map((cloudExpert) => {
-                                        return (
-                                            <NavigatePage id='user-profile' url={`user-profile/${cloudExpert?.uuid}`} key={`dashboard_${cloudExpert?.uuid}_page`} className="profile border border-[#BBBDC8] bg-[#FFFFFF] rounded-2xl py-4 px-6 lg:py-8 lg:px-11 xl:px-2 2xl:px-5 grid auto-rows-auto gap-2 text-center shadow-[0_0_35px_0_#AEAEAE1A]">
-                                                <div>
-                                                    <Image src={cloudExpert?.user_picture || ''} type='profile' className="rounded-full mx-auto w-16 h-16" />
+                {
+                    isLoading ?
+                        <div className="cloudExpert grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+                            <CustomLoader count={6} name='FindExpertLoader' />
+                        </div>
+                        : !isEmpty(cloudExpertList) && isArray(cloudExpertList) ?
+                            <div className="cloudExpert grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+                                {cloudExpertList.slice(0, 6).map((cloudExpert) => {
+                                    return (
+                                        <NavigatePage id='user-profile' url={`user-profile/${cloudExpert?.uuid}`} key={`dashboard_${cloudExpert?.uuid}_page`} className="profile border border-[#BBBDC8] bg-[#FFFFFF] rounded-2xl py-4 px-6 lg:py-8 lg:px-11 xl:px-2 2xl:px-5 grid auto-rows-auto gap-2 text-center shadow-[0_0_35px_0_#AEAEAE1A]">
+                                            <div>
+                                                <Image src={cloudExpert?.user_picture || ''} type='profile' className="rounded-full mx-auto w-16 h-16" />
+                                            </div>
+                                            <div className="name">
+                                                <span className="text-base font-figtree font-bold">{cloudExpert?.full_name}</span>
+                                            </div>
+                                            <div className="role">
+                                                <span className="text-sm font-semibold font-figtree">{cloudExpert?.profile?.skill?.[0]}</span>
+                                            </div>
+                                            <div className="price">
+                                                <span className="font-semibold font-figtree text-sm">${cloudExpert?.profile?.hourly_rate} / hr</span>
+                                            </div>
+                                            <div>
+                                                <div className="hire pt-6" tabIndex={5}>
+                                                    <GradientButton onClick={handleHireClick}>
+                                                        Hire Me
+                                                    </GradientButton>
                                                 </div>
-                                                <div className="name">
-                                                    <span className="text-base font-figtree font-bold">{cloudExpert?.full_name}</span>
+                                                <div className="py-3 invite">
+                                                    <span className="font-figtree text-sm text-[#4361EE] font-semibold cursor-pointer">
+                                                        Invite to Job
+                                                    </span>
                                                 </div>
-                                                <div className="role">
-                                                    <span className="text-sm font-semibold font-figtree">{cloudExpert?.profile?.skill?.[0]}</span>
-                                                </div>
-                                                <div className="price">
-                                                    <span className="font-semibold font-figtree text-sm">${cloudExpert?.profile?.hourly_rate} / hr</span>
-                                                </div>
-                                                <div>
-                                                    <div className="hire pt-6" tabIndex={5}>
-                                                        <GradientButton onClick={handleHireClick}>
-                                                            Hire Me
-                                                        </GradientButton>
-                                                    </div>
-                                                    <div className="py-3 invite">
-                                                        <span className="font-figtree text-sm text-[#4361EE] font-semibold cursor-pointer">
-                                                            Invite to Job
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </NavigatePage>
-                                        )
-                                    })}
+                                            </div>
+                                        </NavigatePage>
+                                    )
+                                })}
 
-                                </>
-                                : <NoDataFoundMessage message='Freelancer Not found!' />
-
-                    }
-
-
-                </div>
+                            </div>
+                            : <NoDataFoundMessage message='Not found!' />
+                }
             </div>
         </section>
     )

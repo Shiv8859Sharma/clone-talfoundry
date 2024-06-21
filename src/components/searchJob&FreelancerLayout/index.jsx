@@ -1,5 +1,5 @@
 import { InputField, SelectField } from '@/components/formFields';
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SvgIcon from "@/assets/svg";
 import { searchFilterOptionsJson } from "@/static";
@@ -14,7 +14,7 @@ function classNames(...classes) {
 }
 
 const SearchJobAndFreelancerLayout = (props) => {
-    let { type = '', children, filterCountes = {}, handleActiveTab = () => { }, totalItems = 0, currentPage = 1, handlePageChange = () => { }, updateList = () => { } } = props
+    let { type = '', children, filterCountes = {}, handleActiveTab = () => { }, totalItems = 0, currentPage = 1, handlePageChange = () => { }, updateList = () => { }, searchPlaceholder = 'Search freelancer by skill & role' } = props
     const location = useLocation();
     const [search, setSearch] = useState('')
     const [filterData, setFilterData] = useState({})
@@ -66,7 +66,6 @@ const SearchJobAndFreelancerLayout = (props) => {
         const { name, value, type, checked } = e.target;
 
         let data = getFilterData(name, value, type, checked, { ...filterData })
-        console.log("data :::", data, type);
         setFilterData(data);
         clearTimeout(timerId)
         timerId = setTimeout(() => {
@@ -107,7 +106,7 @@ const SearchJobAndFreelancerLayout = (props) => {
                                 <InputField
                                     name='skill'
                                     type='text'
-                                    placeholder={'Search freelancer by skill & role'}
+                                    placeholder={searchPlaceholder}
                                     defaultValue={search}
                                     leftIcon={<SvgIcon name='search-icon' className='stroke-[#292D32]' />}
                                 />
@@ -158,7 +157,7 @@ const SearchJobAndFreelancerLayout = (props) => {
                                         }
                                             onClick={handleActiveTab}
                                         >
-                                            {({ selected, ...rest }) => (
+                                            {({ selected }) => (
                                                 <>
                                                     <SvgIcon name={detail?.icon} className={`${selected ? 'stroke-[#4361EE]' : 'stroke-[#17181C]'}`} />
                                                     <button data-target={`panel-${index + 1}`} className={classNames(
@@ -301,15 +300,16 @@ const SearchJobAndFreelancerLayout = (props) => {
 
             </section>
             <section className="w-[calc(100%-212px)] mx-auto py-6 flex gap-5">
-                <Pagination
-                    totalItems={totalItems}
-                    itemsPerPage={10}
-                    currentPage={currentPage}
-                    onPageChange={handlePageChange}
-                />
+                {totalItems > 0 &&
+                    <Pagination
+                        totalItems={totalItems}
+                        itemsPerPage={10}
+                        currentPage={currentPage}
+                        onPageChange={handlePageChange}
+                    />}
             </section>
         </main>
     )
 }
 
-export default SearchJobAndFreelancerLayout
+export default memo(SearchJobAndFreelancerLayout);

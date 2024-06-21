@@ -22,9 +22,12 @@ const useNetworkStatus = () => {
             window.removeEventListener('offline', handleOffline);
         };
     }, []);
-
+    let timerId = ''
     useEffect(() => {
+
+        let type = ''
         const handleConnectionChange = (e) => {
+            type = e.type
             if (e.type === 'online') {
                 navigate('/');
             } else {
@@ -34,15 +37,22 @@ const useNetworkStatus = () => {
 
         window.addEventListener('online', handleConnectionChange);
         window.addEventListener('offline', handleConnectionChange);
-
+        
+        clearTimeout(timerId);
+        timerId =  setTimeout(() => {
+            if (!type && (isConnected || navigator.onLine)) {
+                navigate('/');
+            }
+        }, 1500)
+       
 
         return () => {
+            console.log("this is runnn return");
             window.removeEventListener('online', handleConnectionChange);
             window.removeEventListener('offline', handleConnectionChange);
 
         };
     }, [navigator.onLine]);
-
     return isConnected;
 };
 

@@ -1,6 +1,7 @@
 import { ALL_NOTIFICATIONS, REMOVE_NOTIFICATION, UNREAD_NOTIFICATIONS } from "../../actions/actionsType";
+let initialstate = { unread_notification: [], all_notification: [] }
 
-export function notifications(state = { unread_notification: [], all_notification: [] }, action) {
+export function notifications(state = initialstate, action) {
     switch (action.type) {
         case `${UNREAD_NOTIFICATIONS}_SUCCESS`:
             return {
@@ -19,6 +20,13 @@ export function notifications(state = { unread_notification: [], all_notificatio
                 ...state,
                 [stateName]: state?.[stateName]?.filter(notifi => notifi?.uuid !== uuid)
             }
+        case `RESET_all_notifications_STATE`:
+            return {
+                ...state,
+                all_notification: []
+            }
+        case `RESET_ALL_STATE`:
+            return initialstate
         default:
             return state;
     }

@@ -11,3 +11,21 @@ export const getTechSkillsData = (params = {}) => ({
     URLEndPoint: "FETCH_TECH_SKILLS",
     axiosService: true,
 })
+
+
+export function updateFavourite(id, type, endPointType, reducerName) {
+    let params = type === 'job' ? { job_id: id } : { freelancer_id: id }
+    let endPoint = endPointType === 'add' ? "ADD_FAVOURITE" : 'REMOVE_FAVOURITE'
+    return ({
+        type: `ADD_REMOVE_FAVOURITE_${reducerName.toUpperCase()}`,
+        method: endPointType === 'add' ? 'post' : 'get',
+        URLEndPoint: endPoint,
+        params,
+        axiosService: true,
+        toaster: {
+            // loading: true
+        },
+        withResponseReturnData: { id, type, endPoint }
+    })
+}
+

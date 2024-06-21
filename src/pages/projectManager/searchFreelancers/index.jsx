@@ -105,7 +105,7 @@ const FindFreelancer = () => {
                 handlePageChange={handlePageChange}
                 currentPage={currentPage}
                 updateList={getFreelancerUserDetailsList}
-                totalItems={10}
+                totalItems={0}
             >
                 <div className="flex flex-col gap-6">
 
@@ -141,7 +141,7 @@ const FindFreelancer = () => {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <span className="font-figtree font-normal text-sm text-[#17181C]"><b></b> {cloudExpert?.profile?.about_me}</span>
+                                                    <span className="font-figtree font-normal text-sm text-[#17181C] line-clamp-2 sm:line-clamp-4 md:line-clamp-2"><b></b> {cloudExpert?.profile?.about_me}</span>
                                                 </div>
                                                 <RollSkillTagList list={cloudExpert?.profile?.skill}
                                                     deleteIconShow={false}

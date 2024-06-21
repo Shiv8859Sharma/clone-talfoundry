@@ -42,7 +42,7 @@ const ProjectManagerHeader = () => {
     }
 
     return (
-        <div className="bg-[#17181C] w-full relative">
+        <div className="bg-[#17181C] w-full">
             {/* Mobile menu */}
             <Transition show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-40 " onClose={setOpen}>
@@ -167,7 +167,7 @@ const ProjectManagerHeader = () => {
                 </Dialog>
             </Transition>
 
-            <header className="bg-[#17181C] py-2  w-full fixed top-0 left-0 right-0">
+            <header className="bg-[#17181C] py-3  w-full fixed z-50">
                 <nav aria-label="Top" className="mx-auto max-w-[95rem] px-4 sm:px-6 lg:px-8">
                     <div className="">
                         <div className="flex h-16 items-center justify-between gap-3">

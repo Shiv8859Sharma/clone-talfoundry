@@ -2,6 +2,8 @@ import { lazy } from "react";
 
 // public pages
 import Home from "@/pages/Home";
+import Notifications from "../pages/notifications";
+
 const SearchFreelancer = lazy(() => import('@/pages/public/searchFreelancer'));
 const FindWork = lazy(() => import('@/pages/public/findWork'));
 const AwsAdvisory = lazy(() => import('@/pages/public/services/awsAdvisory'));
@@ -10,13 +12,21 @@ const HowItWorks = lazy(() => import('@/pages/public/howItWorks'));
 const HelpCenter = lazy(() => import('@/pages/public/helpCenter'));
 
 // comman pages 
-const Transactions =  lazy(() => import('@/pages/transactions'));
+const Transactions = lazy(() => import('@/pages/transactions'));
 
 // project manager Pages
 const ProjectManagerDashboard = lazy(() => import('@/pages/projectManager/home'));
-const PMSearchFreelancer =  lazy(() => import('@/pages/projectManager/searchFreelancers'));
+const PMSearchFreelancer = lazy(() => import('@/pages/projectManager/searchFreelancers'));
 const Analytics = lazy(() => import('@/pages/projectManager/analytics'));
 
+
+// cloud expert Pages
+const CloudExpertDashboard = lazy(() => import('@/pages/cloudExpert/home'));
+const CloudExperFindWork = lazy(() => import('@/pages/cloudExpert/findWork'));
+const CloudExpertMyJobs = lazy(() => import('@/pages/cloudExpert/myJobs'));
+const CloudExpertProposals = lazy(() => import('@/pages/cloudExpert/myProposals'));
+const CloudExpertAllContracts = lazy(() => import('@/pages/cloudExpert/allContracts'));
+const CloudExpertAnalytics = lazy(() => import('@/pages/cloudExpert/analytics'));
 
 export const PublicRoutes = {
     children: [
@@ -53,16 +63,17 @@ export const PublicRoutes = {
 
 export const CloudExpertRoutes = {
     children: [
-        { path: "", element: <p>CE Dashboard</p> },
-        { path: "/find-work", element: <p>Find Work</p> },
-        { path: "/my-jobs", element: <p>My jobs</p> },
-        { path: "/all-contracts", element: <p>All contracts</p> },
+        { path: "", element: <CloudExpertDashboard /> },
+        { path: "/find-work", element: <CloudExperFindWork /> },
+        { path: "/my-jobs", element: <CloudExpertMyJobs /> },
+        { path: '/all-contracts', element: <CloudExpertAllContracts /> },
+        { path: "/my-proposals", element: <CloudExpertProposals /> },
         { path: "/transactions", element: <Transactions /> },
-        { path: "/analytics", element: <p>Analytics</p> },
+        { path: "/analytics", element: <CloudExpertAnalytics /> },
         { path: "/settings", element: <p>Settings</p> },
         { path: "/messages", element: <p>CE Messages</p> },
-        { path: "/notifications", element: <p>CE notifications</p> },
-        { path: "/find-work", element: <p>CE Dashboard</p> },
+        { path: "/notifications", element: <Notifications /> },
+
 
     ],
 };
@@ -77,8 +88,8 @@ export const ProjectManagerRoutes = {
         { path: "/my-jobs", element: <p>My jobs</p> },
         { path: "/my-proposals", element: <p>My proposals</p> },
         { path: "/all-contracts", element: <p>All contracts</p> },
-        { path: "/transactions", element: <Transactions />},
-        { path: "/notifications", element: <p>Notifications</p> },
+        { path: "/transactions", element: <Transactions /> },
+        { path: "/notifications", element: <Notifications /> },
         { path: "/settings", element: <p>Pm settings</p> },
     ],
 };
