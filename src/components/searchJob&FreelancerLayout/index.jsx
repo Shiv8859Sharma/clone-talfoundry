@@ -7,7 +7,7 @@ import { isArray, isEmpty } from "lodash";
 import { Disclosure, DisclosureButton, DisclosurePanel, Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Pagination from "@/components/pagination";
-import PageHeading from '../../layouts/pageHeading';
+import PageHeading from '@/layouts/pageHeading';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')

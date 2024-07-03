@@ -1,3 +1,4 @@
+import formatDate from "../../../utills/formatDate";
 import { TRANSACTIONS_HISTORY, TRANSACTION_DETAILS } from "../../actions/actionsType";
 
 let initialstate = { transactions: [], transactionDetails: {} }
@@ -7,7 +8,7 @@ export function transactions(state = initialstate, action) {
         case `${TRANSACTIONS_HISTORY}_SUCCESS`:
             return {
                 ...state,
-                transactions: action.payload
+                transactions: formatTransactions(action.payload) 
             }
         case `${TRANSACTION_DETAILS}_SUCCESS`:
             return {
@@ -26,3 +27,11 @@ export function transactions(state = initialstate, action) {
             return state;
     }
 }
+
+const formatTransactions = (data) =>  data?.map((item) => {
+    return ({
+        ...item,
+        date: formatDate(item.created_at, 'mm dd/yyyy', 'short') ,
+        'amount/balance' : `$${item?.amount} / $${item?.balance}`
+    })
+})

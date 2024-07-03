@@ -18,8 +18,24 @@ function formatDate(dateString, returnOutput, monthType) {
         yy: shortYear
     };
 
-    const splitBy = returnOutput.includes('/') ? '/' : returnOutput.includes('-') ? '-' : ' ';
-    const newDate = returnOutput.split(splitBy).map(part => dateObj[part] || part).join(splitBy);
+    let newDate = '';
+    let tempStr = '';
+    
+    for (let i = 0; i < returnOutput.length; i++) {
+        if (/[a-zA-Z]/.test(returnOutput[i])) {
+            tempStr += returnOutput[i];
+        } else {
+            if (tempStr) {
+                newDate += (dateObj[tempStr] || tempStr);
+                tempStr = '';
+            }
+            newDate += returnOutput[i];
+        }
+    }
+
+    if (tempStr) {
+        newDate += (dateObj[tempStr] || tempStr);
+    }
 
     return newDate;
 }

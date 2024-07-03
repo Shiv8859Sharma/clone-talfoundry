@@ -29,7 +29,6 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => 
                 pages.push(i);
             }
             pages.push(ellipsis, totalPages);
-            console.log("pages :::", pages);
         } else {
             pages.push(1, ellipsis);
             for (let i = totalPages - pageNumbersToShow; i <= totalPages; i++) {

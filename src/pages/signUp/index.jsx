@@ -47,6 +47,7 @@ const SignUpPage = () => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         let { isValid, data, errors } = getFormValues(e, 'sign_up')
         setSubmitForm(true)
         if (isValid) {
@@ -57,6 +58,7 @@ const SignUpPage = () => {
                 }])
             } else {
                 let location = countryList.find(country => country.name === data.location)
+                console.log("data: ", data);
                 let userDetails = new FormData()
                 userDetails.append("first_name", data.first_name)
                 userDetails.append("last_name", data.last_name)

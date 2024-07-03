@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PageHeading from '@/layouts/pageHeading';
 import { SelectField } from '@/components/formFields';
 import { GradientButton, OutlineButton } from '@/components/buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsHistory } from '../../globalStates/actions/transactionsAction';
 import { resetReduxState } from '../../globalStates/actions/commanAction';
+import CommonTable from '../../components/commonTable';
+import CustomDatePicker from '../../components/dateRangePicker';
+import { CheckboxField } from '../../components/formFields';
 
 const Transactions = () => {
-    const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch()
     const transactions = useSelector(state => state?.transactions?.transactions)
     const isLoading = useSelector((state => state.loader?.isLoading))
-
-    // console.log(":::: transactions", transactions);
 
     useEffect(() => {
         dispatch(getTransactionsHistory())
@@ -21,9 +21,62 @@ const Transactions = () => {
             dispatch(resetReduxState('transactions'))
         })
     }, [])
-    const display = () => {
-        setShowModal(!showModal);
+
+    let columns = [
+        {
+            label: 'DATE',
+            valueKey: 'date',
+            className: 'pt-3 px-8',
+            tdClassname: 'pt-3 px-8'
+        },
+        {
+            label: 'TYPE',
+            valueKey: 'transaction_type',
+            tdClassname: 'pr-2',
+            className: 'pr-2',
+        },
+        {
+            label: 'CLOUD EXPERT',
+            valueKey: 'cloud_expert_name',
+            tdClassname: 'pr-2',
+            className: 'pr-2',
+        },
+        {
+            label: 'AMOUNT/BALANCE',
+            valueKey: 'amount/balance',
+            tdClassname: 'pr-2',
+            className: 'pr-2',
+        },
+        {
+            label: 'REF ID',
+            valueKey: 'reference_id',
+            tdClassname: 'pr-2 text-[#4361EE]',
+            render: (item) => (
+                <button onClick={() => handleReferenceIdClick(item.reference_id)}>
+                    {item.reference_id}
+                </button>
+            ),
+            className: 'pr-2 ',
+        },
+        {
+            label: 'PAYMENT MODE',
+            valueKey: 'payment_mode',
+            tdClassname: 'pr-2',
+            className: 'pr-2',
+        }
+    ]
+
+    const handleReferenceIdClick = (referenceId) => {
+        alert(`Reference ID clicked: ${referenceId}`);
     };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        let form = e.target;
+        let formData = new FormData(form)
+        let data = Object.fromEntries(formData.entries())
+        console.log(": data :::", data);
+    }
 
     return (
         <main className='overflow-hidden'>
@@ -33,176 +86,67 @@ const Transactions = () => {
                     className="default_container max-w-md sm:max-w-[calc(100%-80px)] lg:max-w-[calc(100%-80px)] 3xl:max-w-[1440px] mx-auto overflow-hidden"
                 >
                     <div className="p-10 bg-[#FFFFFF] rounded-lg border border-slate-300">
-                        <div className="flex flex-col lg:flex-row gap-5 flex-wrap lg:flex-nowrap">
-                            <div className="flex flex-col lg:flex-row gap-5 lg:w-full" >
-                                <div className="flex flex-col lg:flex-row lg:items-center gap-5 w-full">
-                                    <div className="flex flex-col gap-2.5 w-full">
-                                        <SelectField
+                        <form onSubmit={handleFormSubmit}>
+                            <div className="flex flex-col lg:flex-row gap-5 flex-wrap lg:flex-nowrap">
+                                <div className="flex flex-col lg:flex-row gap-5 lg:w-full" >
+                                    <div className="flex flex-col lg:flex-row lg:items-start gap-5 w-full">
+                                        <CustomDatePicker
                                             label='Statement Period'
-                                            placeholder='May 19, 2024 - Jun 19, 2024'
-                                            options={[]}
                                         />
-                                    </div>
 
-                                    <div className="relative flex flex-col justify-between items-center gap-2.5 w-full">
                                         <SelectField
                                             label='Transaction Type'
+                                            name='transaction_type'
                                             placeholder='Filter by transaction type'
-                                            options={[]}
+                                            options={['Hourly', 'Fixed']}
                                         />
-                                    </div>
 
-                                    <div className="relative flex flex-col justify-between items-center gap-2.5 w-full">
                                         <SelectField
                                             label='Cloud Expert'
+                                            name='cloudExpert'
                                             placeholder='Filter by cloud expert'
-                                            options={[]}
+                                            options={['Shiv', 'Shivam', 'Rohan']}
                                         />
+
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-2 justify-between lg:items-end lg:w-full mb-4">
+                                    <div>
+                                        <OutlineButton
+                                            type='submit'
+                                        >
+                                            Apply
+                                        </OutlineButton>
+                                    </div>
+                                    <div className="">
+                                        <GradientButton
+                                            type='button'
+                                        >
+                                            Download Invoices
+                                        </GradientButton>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="flex gap-2 justify-between lg:items-end lg:w-full mb-3">
-                                <div>
-                                    <OutlineButton>
-                                        Apply
-                                    </OutlineButton>
-                                </div>
-                                <div className="">
-                                    <GradientButton>
-                                        Download Invoices
-                                    </GradientButton>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-
-                    {/* <!-- Table --> */}
-                    <div className="overflow-x-scroll lg:overflow-x-auto pt-10 mt-4 bg-[#FFFFFF] rounded-lg border border-slate-300">
-
-                        {/* Table */}
-                        <div className=" overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="font-figtree font-semibold text-sm leading-[20px] text-justify bg-[#F1F2F4] rounded-lg">
-                                    <tr>
-                                        <th class="pt-3 px-8">DATE</th>
-                                        <th>TYPE</th>
-                                        <th>CLOUD EXPERT</th>
-                                        <th>AMOUNT/BALANCE</th>
-                                        <th>REF ID</th>
-                                        <th>PAYMENT MODE</th>
-                                    </tr></thead>
-                                <tbody class="font-figtree font-normal text-sm leading-[21px] text-justify">
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 24, 2023</td>
-                                        <td>Fixed Price</td>
-                                        <td>Sherry Donald</td>
-                                        <td>$70.00 / $0.00</td>
-                                        <td>303948274</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Hourly</td>
-                                        <td>Nick Samson</td>
-                                        <td>$200.00 / $70.00</td>
-                                        <td>303948273</td>
-                                        <td>Credit Card</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$200.00 / $70.00</td>
-                                        <td>303948272</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$70.00 / $0.00</td>
-                                        <td>303948271</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$200.00 / $70.00</td>
-                                        <td>303948272</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$70.00 / $0.00</td>
-                                        <td>303948271</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$200.00 / $70.00</td>
-                                        <td>303948272</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$70.00 / $0.00</td>
-                                        <td>303948271</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$200.00 / $70.00</td>
-                                        <td>303948272</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$70.00 / $0.00</td>
-                                        <td>303948271</td>
-                                        <td>Escrow</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="py-4 px-8">Jul 16, 2023</td>
-                                        <td>Payment</td>
-                                        <td>Nick Samson</td>
-                                        <td>$30.00 / $270.00</td>
-                                        <td>303948270</td>
-                                        <td>...</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
+                    <CommonTable
+                        columns={columns}
+                        theadClassName="font-figtree font-semibold text-sm leading-[20px] text-justify bg-[#F1F2F4] rounded-lg text-nowrap whitespace-nowrap"
+                        tbodyClassName="font-figtree font-normal text-sm leading-[21px] text-justify text-nowrap whitespace-nowrap"
+                        data={transactions}
+                        noDataAvailableMessage={'No data available'}
+                        isLoading={isLoading}
+                    // pagination={true}
+                    // totalItems={10}
+                    />
                 </div>
             </section>
         </main>
     );
 };
 
-export default Transactions;
+export default memo(Transactions);
 
 {/* {showModal && (
                         <div className="fixed z-10 overflow-y-auto top-0 w-full left-0 flex justify-center items-center h-full bg-gray-800 bg-opacity-75">

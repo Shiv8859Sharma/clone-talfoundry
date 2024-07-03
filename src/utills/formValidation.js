@@ -5,7 +5,7 @@ export const validateForm = (formData, formName) => {
     let validationRules = rules[`${formName}_validation_rules`]
     for (const field in validationRules) {
         if (!validationRules.hasOwnProperty(field)) continue;
-        const value = formData[field]
+        const value = formData[field].trim()
         const regex = validationRules[field]
         const ruleMessages = rules[`${formName}_error_message`]
         if (!value || value == null) {
