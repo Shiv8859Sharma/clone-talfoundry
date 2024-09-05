@@ -2,7 +2,7 @@ const apiEndPoint = {
     LOGIN: '/login',
     LOGOUT: '/logout',
     FETCH_PUBLIC_JOBS: '/find_jobs',
-    FIND_FREELANCERS: '/find_freelancers',
+    FIND_FREELANCERS: '/welcome/find_freelancers',
     CURRENT_USER_DETAILS: '/current_user_details',
     NOTIFICATIONS: '/notifications',
     USER_ACTIVITY_SUMMARY: '/new_dashboard',

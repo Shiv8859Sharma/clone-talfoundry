@@ -8,10 +8,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Tab, TabGroup, TabList, 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Pagination from "@/components/pagination";
 import PageHeading from '@/layouts/pageHeading';
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+import { classNames } from '@/utills/reuse-functions';
 
 const SearchJobAndFreelancerLayout = (props) => {
     let { type = '', children, filterCountes = {}, handleActiveTab = () => { }, totalItems = 0, currentPage = 1, handlePageChange = () => { }, updateList = () => { }, searchPlaceholder = 'Search freelancer by skill & role' } = props

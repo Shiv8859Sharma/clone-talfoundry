@@ -3,7 +3,7 @@ import { FETCH_TECH_SKILL } from "../../actions/actionsType";
 let initialState = {
     techSkills: []
 }
-const CommanState = (state = {}, { type, payload }) => {
+const CommanState = (state = initialState, { type, payload }) => {
     switch (type) {
         case `${FETCH_TECH_SKILL}_SUCCESS`:
             return {
@@ -19,3 +19,20 @@ const CommanState = (state = {}, { type, payload }) => {
 }
 
 export default CommanState
+
+export const tabsState = (state = {}, { type, payload }) => {
+
+    switch (type) {
+        case `SET_CURRENT_TAB`:
+            let { name, details } = payload
+            return {
+                ...state,
+                [name]: details
+            }
+        case `RESET_CURRENT_TAB`:
+        case `RESET_ALL_STATE`:
+            return {}
+        default:
+            return state;
+    }
+}

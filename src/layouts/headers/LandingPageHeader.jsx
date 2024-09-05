@@ -27,7 +27,7 @@ const LandingPageHeader = () => {
         });
     }
     return (
-        <div className="bg-white">
+        <div className="bg-white h-full w-full">
             {/* Mobile menu */}
             <Transition show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>

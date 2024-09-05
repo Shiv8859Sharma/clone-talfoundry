@@ -42,7 +42,7 @@ const ProjectManagerHeader = () => {
     }
 
     return (
-        <div className="bg-[#17181C] w-full">
+        <div className="bg-[#17181C] w-full h-full">
             {/* Mobile menu */}
             <Transition show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-40 " onClose={setOpen}>
@@ -117,9 +117,9 @@ const ProjectManagerHeader = () => {
                                                             link.dropDownList.map((list) => {
                                                                 return (
                                                                     <MenuItem key={list.label} as='div'
-                                                                        className={`px-8 py-3 text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
+                                                                        className={`text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
                                                                     >
-                                                                        <NavigatePage id={list.label.split(' ').join('_').toLowerCase()} url={list.href}>
+                                                                        <NavigatePage className='px-8 py-3 ' id={list.label.split(' ').join('_').toLowerCase()} url={list.href}>
                                                                             {list.label}
                                                                         </NavigatePage>
                                                                     </MenuItem>
@@ -232,9 +232,9 @@ const ProjectManagerHeader = () => {
                                                             link.dropDownList.map((list) => {
                                                                 return (
                                                                     <MenuItem key={list.label} as='div'
-                                                                        className={`px-8 py-3 text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
+                                                                        className={`text-[#FFFFFF] block transition-all duration-300 hover:bg-[#4361EE] hover:scale-105`}
                                                                     >
-                                                                        <NavigatePage id={list.label} url={list.href}>
+                                                                        <NavigatePage id={list.label} className='px-8 py-3' url={list.href}>
                                                                             {list.label}
                                                                         </NavigatePage>
                                                                     </MenuItem>

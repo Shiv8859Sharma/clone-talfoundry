@@ -1,9 +1,10 @@
 import Image from '@/components/ImageElement';
 import { MapIcon } from '@/assets/svg';
+import HighLightBanner from '@/components/highLightBanner';
 
-
-const UserProfileCard = (props) => {
-    let { image = '', children, name = '', location = '', title = '', buttons = '' } = props
+const UserDetailsCard = (props) => {
+    let { image = '', children, name = '', location = '', title = '', buttons = '', visibility } = props
+    
     return (
         <div className="flex gap-4 lg:justify-between p-4 md:p-6 lg:p-8 bg-[#FFFFFF] rounded-2xl border-slate-200 border shadow-[0_0_35px_0_#AEAEAE1A]">
             <div className="profile w-28 h-28 hidden lg:block">
@@ -19,6 +20,8 @@ const UserProfileCard = (props) => {
                                 </span>
                             </div>
                             <div>
+                                <HighLightBanner name={visibility || 'Public'} />
+
                                 {/* <img src="assets/cloud/Public.svg" alt=""> */}
                             </div>
                         </div>
@@ -46,4 +49,4 @@ const UserProfileCard = (props) => {
     )
 }
 
-export default UserProfileCard
+export default UserDetailsCard

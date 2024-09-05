@@ -26,7 +26,7 @@ const CloudExperHeader = () => {
     }
 
     return (
-        <div className="bg-[#17181C] w-full relative">
+        <div className="bg-[#17181C] w-full relative h-full">
             {/* Mobile menu */}
             <Transition show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-40" onClose={setOpen}>

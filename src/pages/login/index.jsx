@@ -105,9 +105,9 @@ function LoginPage() {
 
 
     return (
-        <div className="content_box relative m-auto  h-[80vh]  border border-[#BBBDC8] rounded-[14px] bg-white overflow-y-auto overflow-x-hidden flex flex-col lg:flex-row">
+        <div className="content_box relative m-auto  h-[80vh] border border-[#BBBDC8] rounded-lg me-0.5 bg-white overflow-x-hidden flex flex-col lg:flex-row">
             <LoginSignUpLeftLayout />
-            <div className="content_right lg:w-1/2 sm:px-6 lg:px-0 xl:px-10 py-10 md:py-16  flex flex-col gap-3">
+            <div className="content_right lg:w-1/2 sm:px-6 lg:px-0 xl:px-10 py-10 md:py-16  flex flex-col gap-3 overflow-y-auto scrollbar">
                 <div className="form_heading px-4 sm:px-6 md:px-8 flex flex-col gap-4">
                     <div className="title">
                         <span className="text-[#17181C] text-3xl md:text-4xl xl:text-5xl font-bold" >Log in</span>

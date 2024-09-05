@@ -1,5 +1,5 @@
 const OutlineButton = (props) => {
-    let { className, onClick = () => { }, children, text, id = '', type = 'button', ...rest } = props
+    let { className='', onClick = () => { }, children, text, id = '', type = 'button', ...rest } = props
     return (
         <div className="work_btn rounded-full bg-gradient-to-tl from-[#7209B7] from-15.6% to-[#4361EE] to-84.4% p-0.5">
             <button onClick={onClick}

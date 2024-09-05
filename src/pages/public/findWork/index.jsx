@@ -84,7 +84,7 @@ const FindWork = () => {
                                     <span className="text-[#3E4048] text-sm"> jobs found</span>
                                 </div>
                                 {
-                                    !loader?.isLoading ?
+                                    loader?.isLoading ?
                                         <ul className="available_jobs grid lg:grid-cols-2 gap-6 xl:gap-y-8">
                                             <CustomLoader count={4} name='FindWorkLoader' />
                                         </ul>

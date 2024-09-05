@@ -29,3 +29,8 @@ export function updateFavourite(id, type, endPointType, reducerName) {
     })
 }
 
+export const setCurrentTab = (payload) => ({
+    type: 'SET_CURRENT_TAB',
+    payload
+})
+

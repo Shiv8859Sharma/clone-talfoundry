@@ -7,7 +7,6 @@ import { getTransactionsHistory } from '../../globalStates/actions/transactionsA
 import { resetReduxState } from '../../globalStates/actions/commanAction';
 import CommonTable from '../../components/commonTable';
 import CustomDatePicker from '../../components/dateRangePicker';
-import { CheckboxField } from '../../components/formFields';
 
 const Transactions = () => {
     const dispatch = useDispatch()

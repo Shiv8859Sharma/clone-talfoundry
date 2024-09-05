@@ -12,6 +12,7 @@ import { isArray, isEmpty } from "lodash";
 import { useLocation } from "react-router-dom";
 import RollSkillTagList from "@/components/skill&rollTagList"
 import { popupOpen } from "@/globalStates/actions/PopupAction";
+import SvgIcon from "@/assets/svg";
 
 let ButtonsLayout = ({ data }) => {
     const dispatch = useDispatch()
@@ -114,6 +115,7 @@ const FindFreelancer = () => {
                             : !isEmpty(cloudExpertList) && isArray(cloudExpertList) ?
                                 <>
                                     {cloudExpertList.map((cloudExpert) => {
+                                        
                                         return (
                                             <UserDetailsCard
                                                 name={cloudExpert?.full_name}
@@ -122,6 +124,7 @@ const FindFreelancer = () => {
                                                 title={cloudExpert?.profile?.current_job_title}
                                                 key={`find_freelancer_${cloudExpert?.uuid}`}
                                                 image={cloudExpert?.user_picture}
+                                                visibility={cloudExpert?.profile?.visibility}
                                             >
 
                                                 <div className="flex gap-3 flex-wrap lg:gap-30">
@@ -133,7 +136,7 @@ const FindFreelancer = () => {
                                                     </div>
                                                     <div className="flex items-center">
                                                         <div>
-                                                            {/* <img src="assets/cloud/award 1.svg" alt=""> */}
+                                                            <SvgIcon name={'top-talent-shield-icon'} />
                                                         </div>
                                                         <div>
                                                             <span className="font-figtree font-semibold text-sm text-[#3E4048]">TOP TALENT</span>

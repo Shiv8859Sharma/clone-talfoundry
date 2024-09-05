@@ -8,22 +8,24 @@ import loaderReducer from "./loader";
 import { filterCountForJobs, getAllJobs, publicJobs } from "./Jobs";
 import { notifications } from "./notifications";
 import UserActivitySummary from "./userActiveStatus";
-import CommanState from "./commonReducer";
+import CommanState, { tabsState } from "./commonReducer";
 import { transactions } from "./transactions";
 
 export default combineReducers({
     auth: AuthDetails,
     userDetails: UserDetails,
     popup: PopupDetails,
-    FormDetails,
     publicFreelancerUserList,
     loader: loaderReducer,
     publicJobs,
     getAllJobs,
     notifications,
-    UserActivitySummary,
     freelancerUserList,
-    CommanState,
     filterCountForJobs,
-    transactions
+    transactions,
+    tabsState,
+    // add new state
+    FormDetails,
+    UserActivitySummary,
+    CommanState,
 })

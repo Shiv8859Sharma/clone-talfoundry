@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import router from './routes';
+import React, { memo, useMemo } from 'react';
+import createRouter from './routes';
 import { RouterProvider } from 'react-router-dom';
 import '@/App.css'
 import { useSelector } from 'react-redux';
@@ -7,15 +7,18 @@ import { useSelector } from 'react-redux';
 function App() {
   let userRole = useSelector(state => state?.auth?.role)
 
-  let userType = useMemo(() => {
-    return userRole || ''
-  }, [userRole])
+  const userType = useMemo(() => {
+    return userRole?.length ? userRole : '';
+  }, [userRole]);
+
+  const router = useMemo(() => createRouter(userType), [userType]);
+
   return (
-    <div className="bg-[#FDFBFE] font-figtree relative">
-      <RouterProvider router={router(userType)} />
+    <div className="bg-[#FDFBFE] font-figtree relative w-full h-full">
+      <RouterProvider router={router} />
     </div>
   );
 }
 
 
-export default App;
+export default memo(App);

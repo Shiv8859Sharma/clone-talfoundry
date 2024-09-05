@@ -1,6 +1,7 @@
 import { Tab } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import SvgIcon from "../../../assets/svg";
+import { Link } from "react-router-dom";
 
 let tabs = ['Client', "Cloud Expert"]
 
@@ -164,7 +165,7 @@ const HelpSlideCard = (props) => {
     let { iconName = '', heading = '', description = '' } = props
     return (
         <li className="btm_box rounded-[14px] transition-all duration-300 lg:hover:shadow-[0px_6px_50px_#137DFF1C] lg:hover:bg-[#FFFFFF]">
-            <a className="flex flex-col gap-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10" href="">
+            <div className="flex flex-col gap-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10">
                 <div className="box_icon">
                     {iconName && <SvgIcon name={iconName} />}
                 </div>
@@ -173,10 +174,12 @@ const HelpSlideCard = (props) => {
                         <span className="text-[#17181C] text-3xl leading-[40px] font-bold">{heading}</span>
                     </div>
                     <div className="subHeading">
+                        <Link to={iconName}>
                         <p className="text-[#3E4048]">{description}</p>
+                        </Link>
                     </div>
                 </div>
-            </a>
+            </div>
         </li>
     )
 }

@@ -2,7 +2,6 @@ import { lazy } from "react";
 
 // public pages
 import Home from "@/pages/Home";
-import Notifications from "../pages/notifications";
 
 const SearchFreelancer = lazy(() => import('@/pages/public/searchFreelancer'));
 const FindWork = lazy(() => import('@/pages/public/findWork'));
@@ -13,7 +12,7 @@ const HelpCenter = lazy(() => import('@/pages/public/helpCenter'));
 
 // comman pages 
 const Transactions = lazy(() => import('@/pages/transactions'));
-
+const Notifications = lazy(() => import('@/pages/notifications'))
 // project manager Pages
 const ProjectManagerDashboard = lazy(() => import('@/pages/projectManager/home'));
 const PMSearchFreelancer = lazy(() => import('@/pages/projectManager/searchFreelancers'));
@@ -27,6 +26,7 @@ const CloudExpertMyJobs = lazy(() => import('@/pages/cloudExpert/myJobs'));
 const CloudExpertProposals = lazy(() => import('@/pages/cloudExpert/myProposals'));
 const CloudExpertAllContracts = lazy(() => import('@/pages/cloudExpert/allContracts'));
 const CloudExpertAnalytics = lazy(() => import('@/pages/cloudExpert/analytics'));
+const CloudExperSettings = lazy(() => import('@/pages/cloudExpert/settings'));
 
 export const PublicRoutes = {
     children: [
@@ -43,13 +43,20 @@ export const PublicRoutes = {
             element: <FindWork />
         },
         {
-            path: '/advisory-services/aws-advisory-services',
-            element: <AwsAdvisory />
+            path: '/advisory-services/',
+            children: [
+                {
+                    index: true,
+                    path: 'aws-advisory-services',
+                    element: <AwsAdvisory />,
+                },
+                {
+                    path: 'salesforce-advisory-services',
+                    element: <SalesforceAdvisory />
+                }
+            ]
         },
-        {
-            path: '/advisory-services/salesforce-advisory-services',
-            element: <SalesforceAdvisory />
-        },
+
         {
             path: '/how-it-works',
             element: <HowItWorks />
@@ -70,7 +77,7 @@ export const CloudExpertRoutes = {
         { path: "/my-proposals", element: <CloudExpertProposals /> },
         { path: "/transactions", element: <Transactions /> },
         { path: "/analytics", element: <CloudExpertAnalytics /> },
-        { path: "/settings", element: <p>Settings</p> },
+        { path: "/settings", element: <CloudExperSettings /> },
         { path: "/messages", element: <p>CE Messages</p> },
         { path: "/notifications", element: <Notifications /> },
 
@@ -80,7 +87,7 @@ export const CloudExpertRoutes = {
 
 export const ProjectManagerRoutes = {
     children: [
-        { path: "/", element: <ProjectManagerDashboard /> },
+        { path: "", element: <ProjectManagerDashboard /> },
         { path: "/search-freelancers", element: <PMSearchFreelancer /> },
         { path: "/freelancers/:tab", element: <p>My freelancer list</p> },
         { path: "/analytics", element: <Analytics /> },

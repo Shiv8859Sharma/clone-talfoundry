@@ -7,7 +7,7 @@ import ConnectionLost from '@/constants/connectionLost';
 import { ErrorBoundary } from '@/constants/ErrorBoundary'
 import { AdminRoutes, CloudExpertRoutes, ProjectManagerRoutes, PublicRoutes } from './routes';
 
-function getRoutes(type) {
+function getRoutes(type) {    
     switch (type) {
         case 'Project Manager':
             return { ...ProjectManagerRoutes };
@@ -23,7 +23,7 @@ function getRoutes(type) {
 const router = (user) => {
     return createBrowserRouter([
         {
-            element: <Layout />,
+            element: <Layout userType={user}/>,
             errorElement: <ErrorBoundary />,
             children: [{ ...getRoutes(user) }]
         },
