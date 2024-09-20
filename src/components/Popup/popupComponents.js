@@ -1,9 +1,11 @@
-import LoginPage from "@/pages/login";
-import SignUpPage from '@/pages/signUp'
-import ForgetPassword from "@/pages/forgetPassword";
-import SeeAllSkills from '@/pages/seeAllSkills'
-import HireFreelancerForm from '@/pages/hireFreelancerForm'
-import SendInviteForm from '@/pages/sendInviteForm'
+import { lazy } from "react";
+
+const LoginPage = lazy(() => import('@/pages/login'))
+const SignUpPage = lazy(() => import('@/pages/signUp'))
+const ForgetPassword = lazy(() => import('@/pages/forgetPassword'))
+const SeeAllSkills = lazy(() => import('@/pages/seeAllSkills'))
+const HireFreelancerForm = lazy(() => import('@/pages/hireFreelancerForm'))
+const SendInviteForm = lazy(() => import('@/pages/sendInviteForm'))
 
 export {
     LoginPage,

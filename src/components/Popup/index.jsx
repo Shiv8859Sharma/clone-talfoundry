@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, Suspense } from 'react'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux'
@@ -65,7 +65,9 @@ function PopupComponent() {
                                 <XMarkIcon className={`${crossIcon ? '' : 'hidden'} absolute right-4 top-3.5 hover:border hover:text-zinc-900 text-zinc-400 hover:border-zinc-300 hover:rounded-full p-2 h-10 w-10 cursor-pointer z-10`} aria-hidden="true"
                                     onClick={ClosePopup}
                                 />
-                                {renderComponebt()}
+                                <Suspense>
+                                    {renderComponebt()}
+                                </Suspense>
                             </DialogPanel>
                         </TransitionChild>
                     </div>

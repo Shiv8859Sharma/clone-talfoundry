@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tab } from '@headlessui/react';
+import { Tab, TabGroup, TabList } from '@headlessui/react';
 import Image from '@/components/ImageElement';
 import awsImage from '@/assets/webp/aws_black_circle.webp'
 import microsoftImage from '@/assets/commonAssets/microsoft.svg'
@@ -124,7 +124,7 @@ function ExpertsSection() {
         <section className="experts_section">
             <div className="default_container h-full max-w-xs mx-auto sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 3xl:max-w-[1440px]">
                 <div className="expert_content overflow-hidden relative py-16 lg:py-24 flex flex-col gap-6 md:gap-14 lg:gap-16">
-                    <Tab.Group>
+                    <TabGroup>
                         <div className="expert_top flex flex-col justify-between gap-4 md:items-center lg:gap-6">
                             <div className="exp_left flex flex-col gap-2 lg:flex-row">
                                 <span className="text-3xl lg:text-4xl 3xl:text-5xl text-[#17181C] font-semibold">
@@ -134,7 +134,7 @@ function ExpertsSection() {
                                     Cloud Experts
                                 </span>
                             </div>
-                            <Tab.List className="exp_right sm:max-w-[85%] sm:mx-auto md:mx-0 p-4 rounded-full bg-[#F8F3FC] 3xl:w-[26%] flex items-center justify-between xl:w-[35%]">
+                            <TabList className="exp_right sm:max-w-[85%] sm:mx-auto md:mx-0 p-4 rounded-full bg-[#F8F3FC] 3xl:w-[26%] flex items-center justify-between xl:w-[35%]">
                                 {tabs.map((tab) => (
                                     <div
                                         key={`${tab}_tab`}
@@ -147,7 +147,7 @@ function ExpertsSection() {
                                         </Tab>
                                     </div>
                                 ))}
-                            </Tab.List>
+                            </TabList>
                         </div>
                         <div className={`expert_btm flex items-center w-full transition-all duration-300 ease-in-out ${activeTab === 'Explore by Role' ? 'translate-x-0' : '-translate-x-full'}`}>
                             {tabs.map((tab) => (
@@ -212,7 +212,7 @@ function ExpertsSection() {
                                 </div>
                             ))}
                         </div>
-                    </Tab.Group>
+                    </TabGroup>
                 </div>
             </div>
         </section>

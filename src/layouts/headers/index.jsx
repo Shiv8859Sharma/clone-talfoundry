@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
+import { lazy, useEffect } from "react"
+
 import LandingPageHeader from "./LandingPageHeader"
-import ProjectManagerHeader from "./PmHeader"
-import AdminHeader from "./AdminHeader"
-import FreelancerHeader from "./CeHeader"
-import { useEffect } from "react"
+const ProjectManagerHeader = lazy(() => import('./PmHeader'))
+const AdminHeader = lazy(() => import('./AdminHeader'))
+const FreelancerHeader = lazy(() => import('./CeHeader'))
 import { getCurrentUserDatails } from "@/globalStates/actions/userAction"
 
 const Header = () => {

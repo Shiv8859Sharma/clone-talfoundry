@@ -13,9 +13,9 @@ import stars from '@/assets/webp/stars.webp'
 import hero1 from '@/assets/webp/hero_1.webp'
 import hero2 from '@/assets/webp/hero_2.webp'
 import hero3 from '@/assets/webp/hero_3.webp'
-import { useEffect, useState } from 'react'
-import TextTypewriter from '@/components/textTypeWrite'
-import SvgIcon from "@/assets/svg"
+import { lazy, Suspense, useEffect, useState } from 'react'
+const TextTypewriter = lazy(() => import('@/components/textTypeWrite'));
+
 
 let bounceImage = [hero1, hero2, hero3]
 let typingText = ['Engineers', 'Developers', 'Designers', 'Architects', 'Talents',]
@@ -38,12 +38,14 @@ const HeroSection = () => {
                     <div className="hero_top flex flex-col items-center gap-6 xl:gap-8">
                         <div className="hero_heading flex flex-col items-center gap-4 lg:max-w-[90%] lg:mx-auto xl:max-w-[70%]">
                             <h1 className="flex flex-col items-center justify-center gap-1 h-48 text-[38px] leading-[48px] md:h-20 lg:h-48 xl:h-auto md:text-4xl lg:text-5xl lg:leading-[68px] xl:text-6xl xl:leading-[74px] text-[#17181C] font-semibold text-center md:inline-block">
-                                Connect with the Next Generation 
+                                Connect with the Next Generation
                                 <span
                                     id="word"
                                     className="word text-transparent bg-clip-text bg-gradient-to-tl from-[#7209B7] from-15.6% to-[#4361EE] to-84.4%"
                                 >
-                                    {' '}<TextTypewriter text={typingText} delay={80} infinite />
+                                    {' '}<Suspense fallback={null}>
+                                        <TextTypewriter text={typingText} delay={80} infinite />
+                                    </Suspense>
                                 </span>
                             </h1>
                             <span className="max-w-[80%] text-[#3E4048] text-center">We are your one-stop site to find amazing Cloud
@@ -63,9 +65,9 @@ const HeroSection = () => {
                         <div className="hero_rating flex items-center">
                             <div className="rating_left flex items-center gap-3 pr-1 md:pr-2 border-r border-[rgba(62, 64, 72, 1)]">
                                 <div className="flex -space-x-4 rtl:space-x-reverse">
-                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user1} alt="" />
-                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user2} alt="" />
-                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user3} alt="" />
+                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user1} alt="user-1" loading='lazy' />
+                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user2} alt="user-2" loading='lazy' />
+                                    <img className="w-[45px] h-[45px] dark:border-gray-800" src={user3} alt="user-3" loading='lazy' />
                                 </div>
                                 <div className="left_txt flex flex-col gap-1">
                                     <span className="font-figtree font-semibold text-sm text-[#17181C] md:text-lg">2,293+</span>
@@ -76,7 +78,7 @@ const HeroSection = () => {
                             <div className="rating_right flex flex-col gap-1 pl-1 md:pl-2">
                                 <span className="font-figtree font-semibold text-sm text-[#17181C] md:text-lg">4.8</span>
                                 <div className="star_txt flex items-center gap-2">
-                                    <img src={stars} alt="Stars" />
+                                    <img src={stars} alt="Stars" loading='lazy' />
                                     <span className="font-figtree text-xs text-[#17181C] opacity-75 md:text-base">Avg. Rating</span>
                                 </div>
                             </div>
@@ -90,7 +92,7 @@ const HeroSection = () => {
                                     {bounceImage.map((image, index) => {
                                         return (
                                             <div key={`cardBounce_${index}_image`} className={`heroImg_1 absolute translate-y-full ${index === activeImage ? 'animate-[cardBounce_4s_ease-in-out_infinite]' : ''}`}>
-                                                <img src={image} alt="hero_1" />
+                                                <img src={image} alt="hero_1" loading='lazy' />
                                             </div>
                                         )
                                     })}
@@ -134,7 +136,7 @@ const HeroSection = () => {
                     <div className="floating_item_4 w-full h-full bg-[#7209B766] rotate-[10deg] blur-[150px]"></div>
                     <div className="item_content hidden lg:flex flex-col items-center absolute -rotate-[10deg]">
                         <div className="item_img w-[90px] h-[90px] -rotate-[9deg]">
-                            <img src={nikitaSvg} alt="" />
+                            <img src={nikitaSvg} alt="nikita user image" loading='lazy' />
                         </div>
                         <div className="item_txt bg-[#FFFFFF80] rounded-full flex flex-col items-center md:w-32 px-2 py-1 absolute top-[72%] backdrop-blur-lg">
                             <span className="text-[9px] md:text-sm font-semibold text-[#17181C]">Nitika Sharma</span>
@@ -147,7 +149,7 @@ const HeroSection = () => {
                     <div className="floating_item_3 w-full h-full bg-[#4CC9F066] rotate-[10deg] blur-[150px]"></div>
                     <div className="item_content hidden lg:flex flex-col items-center absolute rotate-[10deg]">
                         <div className="item_img w-[90px] h-[90px] rotate-[16deg]">
-                            <img src={patelSvg} alt="" />
+                            <img src={patelSvg} alt="patel image" loading='lazy' />
                         </div>
                         <div className="item_txt bg-[#FFFFFF80] rounded-full flex flex-col items-center px-4 md:w-28 py-1 absolute top-[72%] lg:w-32 backdrop-blur-lg">
                             <span className="text-[9px] md:text-sm font-semibold text-[#17181C]">Peter Pandit</span>
@@ -163,26 +165,26 @@ const HeroSection = () => {
                 <div className="dot_2 absolute top-[36%] right-[5%] w-[18px] h-[18px] rounded-full bg-[#4361EE] shadow-[0px_10px_20px_rgba(67,97,238,0.4)] xl:top-[30%] xl:right-[5%] lg:top-[30%] lg:right-[0%] 3xl:top-[30%] 3xl:right-[2%]"></div>
                 {/* <!-- floating circles section --> */}
                 <div className="heart hidden xl:flex w-14 h-14 absolute items-center justify-center lg:top-[40%] lg:right-[15%] xl:top-[45%] xl:right-[15%] 3xl:top-[50%] 3xl:right-[20%] bg-[#ECF9FD] rounded-full shadow-[0px_10px_20px_#7209B733]">
-                    <img width="26px" src={awsSvg} alt="heart" />
+                    <img width="26px" src={awsSvg} alt="heart" loading='lazy' />
                 </div>
 
                 <div className="web-development hidden xl:flex w-14 h-14 absolute items-center justify-center lg:top-[40%] lg:-right-[15%] xl:top-[45%] xl:left-[20%] 3xl:top-[50%] 3xl:left-[25%] bg-[#ECF9FD] rounded-full shadow-[0px_10px_20px_#7209B733]">
-                    <img width="26px" src={salesForceSvg} alt="web-development" />
+                    <img width="26px" src={salesForceSvg} alt="web-development" loading='lazy' />
                 </div>
 
                 <div className="cloud hidden xl:flex w-14 h-14 absolute items-center justify-center top-[20%] right-[10%] bg-[#ECF9FD] rounded-full shadow-[0px_10px_20px_#7209B733]">
-                    <img width="26px" src={microsoftSvg} alt="cloud" />
+                    <img width="26px" src={microsoftSvg} alt="cloud" loading='lazy' />
                 </div>
 
                 <div className="flash hidden xl:flex w-14 h-14 absolute items-center justify-center top-[25%] left-[15%] bg-[#ECF9FD] rounded-full shadow-[0px_10px_20px_#7209B733]">
-                    <img width="26px" src={oracleSvg} alt="flash" />
+                    <img width="26px" src={oracleSvg} alt="flash" loading='lazy' />
                 </div>
                 {/* <!-- flying bg section --> */}
                 <div className="hidden lg:block flying absolute bottom-[5%] lg:-left-[24%] xl:-left-[4%]">
-                    <img src={flyingSvg} alt="flying" />
+                    <img src={flyingSvg} alt="flying" loading='lazy' />
                 </div>
                 <div className="flying hidden lg:block w-40 absolute -bottom-[2%] lg:-right-[20%] xl:-right-[6%]">
-                    <img src={flyingSvg} alt="flying" />
+                    <img src={flyingSvg} alt="flying" loading='lazy' />
                 </div>
             </div>
         </section>
